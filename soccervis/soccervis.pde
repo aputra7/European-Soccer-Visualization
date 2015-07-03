@@ -1,29 +1,50 @@
 import controlP5.*; 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Collections;
 
 
 //Global variables
-Table t;
-float yMax;
-List<HashMap<String, Integer>> categories  = new ArrayList<HashMap<String, Integer>>();
-int[] dropdownListSelection = new int[3];
-DropdownList categoricalAtt, quantitativeAtt, barStyle;
+Table[] seasons;
+DropdownList teamA, teamB, league;
+int[] pointsA;      //for overview line charts
+int[] pointsB;      //for overview line charts
+int selectedLeague;  //YET TO BE IMPLEMENTED.
+int selectedSeason; //0-21 where 1993/1994 = 0 and 2014/2015 = 21
+int selectedTeamA;  //0-21 Corresponds to index of teamList
+int selectedTeamB;  //0-21 Corresponds to index of teamList
+ArrayList<String> teamList = new ArrayList<String>(); // List of team names
 
 void setup(){
   //Set up the window
-  size(1280,720);
+  size(1440, 810); // 16:9 aspect ratio
   colorMode(RGB, 1);
   background(color(1,1,1));
+  
+  // Import data
+  seasons = new Table[22];
+  pointsA = new int[22];
+  pointsB = new int[22];
+  importData("E"); // 'E' for English Premier League
 
   //controlP5
   ControlP5 controlP5 = new ControlP5(this);
-  categoricalAtt = controlP5.addDropdownList("0", 820, 175, 100, 200);
-  quantitativeAtt = controlP5.addDropdownList("1", 945, 175, 100, 200);
-  barStyle = controlP5.addDropdownList("2", 1070, 175, 100, 200);
-  populateList(categoricalAtt, "c");
-  populateList(quantitativeAtt, "q");
-  populateList(barStyle, "b");
+  teamA = controlP5.addDropdownList("0", (width/6)-100, 20, 200, 200);
+  teamB = controlP5.addDropdownList("1", (width*5/6)-100, 20, 200, 200);
+  league = controlP5.addDropdownList("2", (width/2)-75, 20, 150, 200);
+  controlP5.addSlider("slider")
+     .setPosition((width/2)-220,300)
+     .setWidth(440)
+     .setRange(1993,2014)
+     .setValue(2014)
+     .setNumberOfTickMarks(22)
+     .setSliderMode(Slider.FLEXIBLE)
+     ;
+  populateList(teamA, "a");
+  populateList(teamB, "b");
+  populateList(league, "l");
+  selectedTeamA = 0;
+  selectedTeamB = 0;
+  refreshOverview();
 }
 
 void draw(){
@@ -33,35 +54,47 @@ void draw(){
 
 void refresh() {
   
+  // Team Logos
+  renderLogos();
 
-  
+  line(0, height*2/5, width, height*2/5);
+
+  //Overview line charts
+  overviewLineCharts();
+
 }
-//end of refresh function.
 
 
+
+
+
+/*CONTROL P5 STUFF STARTS HERE*/
+/*Do Not Modify*/
 // Fills up the controlP5 dropdown list with the appropriate items.
 void populateList(DropdownList ddl, String type) {
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
   ddl.setBarHeight(15);
-  ddl.captionLabel().set("dropdown");
+  ddl.captionLabel().set("Select Team");
   ddl.captionLabel().style().marginTop = 3;
   ddl.captionLabel().style().marginLeft = 3;
   ddl.valueLabel().style().marginTop = 3;
-  if(type.equals("c")) {
-    ddl.addItem("region", 0);
-    ddl.addItem("state", 1);
-    ddl.addItem("category", 2);
-    ddl.addItem("type", 3);
-    ddl.addItem("caffeination", 4);
-  } else if(type.equals("q")) {
-    ddl.addItem("sales", 0);
-    ddl.addItem("profit", 1);
-  } else if(type.equals("b")) {
-    ddl.addItem("Baseline", 0);
-    ddl.addItem("Rounded tops", 1);
-    ddl.addItem("Triangle", 2);
-    ddl.addItem("Capped", 3);
+  
+  if(type.equals("a") || type.equals("b")) {
+    teamList = new ArrayList<String>();
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String name = row.getString("HomeTeam");
+      if(!teamList.contains(name)) {
+        teamList.add(name);
+      }
+    }
+    Collections.sort(teamList);
+    for(int i = 0; i<teamList.size(); i++) {
+      ddl.addItem(teamList.get(i), i);
+    }
+  } else if(type.equals("l")) {
+    ddl.captionLabel().set("Select League");
+    ddl.addItem("English Premier League", 0);
   }
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
@@ -72,10 +105,21 @@ void controlEvent(ControlEvent theEvent) {
 
   if (theEvent.isGroup()) {
     // check if the Event was triggered from a ControlGroup
-    println("event from group : "+theEvent.getGroup().getValue()+" from "+theEvent.getGroup());
+    int whichDropDownList = Integer.parseInt(theEvent.getGroup().toString().substring(0, 1));
+    if(whichDropDownList == 0) {
+      selectedTeamA = (int)theEvent.getGroup().getValue();
+    } else if(whichDropDownList == 1) {
+      selectedTeamB = (int)theEvent.getGroup().getValue();
+    }
+    refreshOverview();
     //dropdownListSelection[Integer.parseInt(theEvent.getGroup().toString().substring(0, 1))] = int(theEvent.getGroup().getValue());
   } 
   else if (theEvent.isController()) {
     //println("event from controller : "+theEvent.getController().getValue()+" from "+theEvent.getController());
   }
+}
+
+// This is a slider Listener
+void slider(int sliderVal) {
+  selectedSeason = sliderVal - 1993;
 }
