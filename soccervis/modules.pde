@@ -65,14 +65,52 @@ void finesseTeamBRender() {
 //NUMBER OF CORNERS & OFFSIDES
 //0.0 - 50.0
 float attackTeamA() {
-  return 0;
+  float attackScoreA = 0;
+  int homeCorner1 = 0;
+  int awayCorner1 = 0;
+  int homeFouls1 = 0;
+  int awayFouls1 = 0;
+  for(int i = 0; i<seasons.length; i++) {
+    for(TableRow row : seasons[i].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamA))) {
+         homeCorner1 = row.getInt("HC");
+         homeFouls1 = row.getInt("HF");
+      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+         awayCorner1 = row.getInt("AC");
+         awayFouls1 = row.getInt("AF");
+      }
+      attackScoreA = homeCorner1 + homeFouls1 + awayCorner1 + awayFouls1;
+    }
+  }
+    return attackScoreA;
 }
 
 void attackTeamARender() {
   
 }
 float attackTeamB() {
-  return 0;
+  float attackScoreB = 0;
+  int homeCorner2 = 0;
+  int awayCorner2 = 0;
+  int homeFouls2 = 0;
+  int awayFouls2 = 0;
+  for(int i = 0; i<seasons.length; i++) {
+    for(TableRow row : seasons[i].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamB))) {
+         homeCorner2 = row.getInt("HC");
+         homeFouls2 = row.getInt("HF");
+      } else if(awayName.equals(teamList.get(selectedTeamB))) {
+         awayCorner2 = row.getInt("AC");
+         awayFouls2 = row.getInt("AF");
+      }
+      attackScoreB = homeCorner2 + homeFouls2 + awayCorner2 + awayFouls2;
+    }
+  }
+    return attackScoreB;
 }
 
 void attackTeamBRender() {
