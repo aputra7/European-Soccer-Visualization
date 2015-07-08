@@ -1,45 +1,81 @@
+//NUMBER OF SHOTS ON TARGET RATIO
 //0.0 - 50.0
-float module1Update() {
+float finesseTeamA() {
   return 0;
 }
 
-void module1Render() {
+void finesseTeamARender() {
   
 }
+float finesseTeamB() {
+  return 0;
+}
 
+void finesseTeamBRender() {
+  
+}
+//NUMBER OF CORNERS & OFFSIDES
 //0.0 - 50.0
-float module2Update() {
+float attackTeamA() {
   return 0;
 }
 
-void module2Render() {
+void attackTeamARender() {
   
 }
-
-//0.0 - 100.0
-float module3Update() {
+float attackTeamB() {
   return 0;
 }
 
-void module3Render() {
+void attackTeamBRender() {
   
 }
-
+// NUMBER OF FOULS + CARDS
 //0.0 - 100.0
-float module4Update() {
+float defenseTeamA() {
   return 0;
 }
 
-void module4Render() {
+void defenseTeamARender() {
   
 }
-
-//0.0 - 100.0
-float module5Update() {
+float defenseTeamB() {
   return 0;
 }
 
-void module5Render() {
+void defenseTeamBRender() {
+  
+}
+// NUMBER OF GOALS
+//0.0 - 100.0
+float entertainmentTeamA() {
+  return 0;
+}
+
+void entertainmentTeamARender() {
+  
+}
+float entertainmentTeamB() {
+  return 0;
+}
+
+void entertainmentTeamBRender() {
+  
+}
+// WIN LOSS RATIO
+//0.0 - 100.0
+float successTeamA() {
+  return 0;
+}
+
+void successTeamARender() {
+  
+}
+float successTeamB() {
+  return 0;
+}
+
+void successTeamBRender() {
   
 }
 
