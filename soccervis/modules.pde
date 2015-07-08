@@ -193,21 +193,20 @@ void entertainmentTeamARender() {
   
 }
 float entertainmentTeamB() {
-  //JOHN TODO
-//  float numGoalsB = 0;
-//  int awayGoals2 = 0;
-//  int homeGoals2 = 0;
-//    for(TableRow row : seasons[selectedSeason].rows()) {
-//      String homeName = row.getString("HomeTeam");
-//      String awayName = row.getString("AwayTeam");
-//      if(homeName.equals(teamList.get(selectedTeamB))) {
-//         homeGoals2 = row.getInt("FTHG");
-//      } else if(awayName.equals(teamList.get(selectedTeamB))) {
-//         awayGoals2 = row.getInt("FTAG");
-//      }
-//      numGoalsB = awayGoals2 + homeGoalS2;
-//    }
-//    return numGoalsA;
+  float numGoalsB = 0;
+  int awayGoals2 = 0;
+  int homeGoals2 = 0;
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamB))) {
+         homeGoals2 = row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(selectedTeamB))) {
+         awayGoals2 = row.getInt("FTAG");
+      }
+      numGoalsB = awayGoals2 + homeGoalS2;
+    }
+    return numGoalsA;
 }
 
 void entertainmentTeamBRender() {
@@ -216,38 +215,58 @@ void entertainmentTeamBRender() {
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
-  float WLratio = 0;
+  float WLratioA = 0;
   int w = 0;
   int l = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
-         homeGoals1 = row.getInt("FTHG");
+        if(row.getInt("FTHG") > row.getInt("FTAG")){
+          w++;
+        } else if(row.getInt("FTHG") > row.getInt("FTAG")){
+          l++;
+        }
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
-         awayGoals1 = row.getInt("FTAG");
+        if(row.getInt("FTAG") > row.getInt("FTHG")){
+          w++;
+        } else if(row.getInt("FTAG") > row.getInt("FTHG")){
+          l++;
+        }
       }
-      numGoalsA = awayGoals1 + homeGoals1;
+      WLratioA = w / (w+l);
     }
-    return numGoalsA;
+    return WLratioA;
 }
 
 void successTeamARender() {
   
 }
 float successTeamB() {
-  
+  float WLratioB = 0;
+  int w = 0;
+  int l = 0;
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamA))) {
+        if(row.getInt("FTHG") > row.getInt("FTAG")){
+          w++;
+        } else if(row.getInt("FTHG") > row.getInt("FTAG")){
+          l++;
+        }
+      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+        if(row.getInt("FTAG") > row.getInt("FTHG")){
+          w++;
+        } else if(row.getInt("FTAG") > row.getInt("FTHG")){
+          l++;
+        }
+      }
+      WLratioB = w / (w+l);
+    }
+    return WLratioB;
 }
 
 void successTeamBRender() {
-  
-}
-
-//0.0 - 100.0
-float module6Update() {
-  return 0;
-}
-
-void module6Render() {
   
 }
