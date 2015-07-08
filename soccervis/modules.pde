@@ -1,7 +1,12 @@
+//Global Variables
+float finesseRatioA,finesseRatioB;
+float attackScoreA,attackScoreB;
+float defenceScoreA,defenceScoreB;
+float numGoalsA,numGoalsB;
+
 //NUMBER OF SHOTS ON TARGET RATIO
 //0.0 - 1.0
 float finesseTeamA() {
-  float ratio = 0;
   int totalShotsA = 0;
   int onTargetA = 0;
   int hs1 = 0;
@@ -20,16 +25,15 @@ float finesseTeamA() {
       }
       totalShotsA = hs1 + aws1;
       onTargetA = homeOnTarget1 + awayOnTarget1;
-      ratio = onTargetA/totalShotsA;
+      finesseRatioA = onTargetA/totalShotsA;
     }
-    return ratio;
+    return finesseRatioA;
 }
 
 void finesseTeamARender() {
   
 }
 float finesseTeamB() {
-  float ratio = 0;
   int totalShotsB = 0;
   int onTargetB = 0;
   int hs2 = 0;
@@ -49,9 +53,8 @@ float finesseTeamB() {
        totalShotsB = hs2 + aws2;
        onTargetB = homeOnTarget2 + awayOnTarget2;
       }
-      ratio = onTargetB/totalShotsB;
-  println(ratio);
-      return ratio;
+      finesseRatioB = onTargetB/totalShotsB;
+      return finesseRatioB;
       
 }
 
@@ -191,20 +194,20 @@ void entertainmentTeamARender() {
 }
 float entertainmentTeamB() {
   //JOHN TODO
-  float numGoalsB = 0;
-  int awayGoals2 = 0;
-  int homeGoals2 = 0;
-    for(TableRow row : seasons[selectedSeason].rows()) {
-      String homeName = row.getString("HomeTeam");
-      String awayName = row.getString("AwayTeam");
-      if(homeName.equals(teamList.get(selectedTeamB))) {
-         homeGoals2 = row.getInt("FTHG");
-      } else if(awayName.equals(teamList.get(selectedTeamB))) {
-         awayGoals2 = row.getInt("FTAG");
-      }
-      numGoalsB = awayGoals2 + homeGoalS2;
-    }
-    return numGoalsA;
+//  float numGoalsB = 0;
+//  int awayGoals2 = 0;
+//  int homeGoals2 = 0;
+//    for(TableRow row : seasons[selectedSeason].rows()) {
+//      String homeName = row.getString("HomeTeam");
+//      String awayName = row.getString("AwayTeam");
+//      if(homeName.equals(teamList.get(selectedTeamB))) {
+//         homeGoals2 = row.getInt("FTHG");
+//      } else if(awayName.equals(teamList.get(selectedTeamB))) {
+//         awayGoals2 = row.getInt("FTAG");
+//      }
+//      numGoalsB = awayGoals2 + homeGoalS2;
+//    }
+//    return numGoalsA;
 }
 
 void entertainmentTeamBRender() {
