@@ -170,7 +170,20 @@ void defenseTeamBRender() {
 //0.0 - 100.0
 float entertainmentTeamA() {
   //JOHN TODO
-  return 0;
+  float numGoalsA = 0;
+  int awayGoals1 = 0;
+  int homeGoals1 = 0;
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamA))) {
+         homeGoals1 = row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+         awayGoals1 = row.getInt("FTAG");
+      }
+      numGoalsA = awayGoals1 + homeGoals1;
+    }
+    return numGoalsA;
 }
 
 void entertainmentTeamARender() {
@@ -178,7 +191,20 @@ void entertainmentTeamARender() {
 }
 float entertainmentTeamB() {
   //JOHN TODO
-  return 0;
+  float numGoalsB = 0;
+  int awayGoals2 = 0;
+  int homeGoals2 = 0;
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamB))) {
+         homeGoals2 = row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(selectedTeamB))) {
+         awayGoals2 = row.getInt("FTAG");
+      }
+      numGoalsB = awayGoals2 + homeGoalS2;
+    }
+    return numGoalsA;
 }
 
 void entertainmentTeamBRender() {
@@ -187,14 +213,27 @@ void entertainmentTeamBRender() {
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
-  return 0;
+  float WLratio = 0;
+  int w = 0;
+  int l = 0;
+    for(TableRow row : seasons[selectedSeason].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(selectedTeamA))) {
+         homeGoals1 = row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+         awayGoals1 = row.getInt("FTAG");
+      }
+      numGoalsA = awayGoals1 + homeGoals1;
+    }
+    return numGoalsA;
 }
 
 void successTeamARender() {
   
 }
 float successTeamB() {
-  return 0;
+  
 }
 
 void successTeamBRender() {
