@@ -169,6 +169,7 @@ void defenseTeamBRender() {
 // NUMBER OF GOALS
 //0.0 - 100.0
 float entertainmentTeamA() {
+  //JOHN TODO
   return 0;
 }
 
@@ -176,6 +177,7 @@ void entertainmentTeamARender() {
   
 }
 float entertainmentTeamB() {
+  //JOHN TODO
   return 0;
 }
 
