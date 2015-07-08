@@ -3,6 +3,7 @@ float finesseRatioA,finesseRatioB;
 float attackScoreA,attackScoreB;
 float defenceScoreA,defenceScoreB;
 float numGoalsA,numGoalsB;
+float WLratioA, WLratioB;
 
 //NUMBER OF SHOTS ON TARGET RATIO
 //0.0 - 1.0
@@ -33,6 +34,7 @@ float finesseTeamA() {
 void finesseTeamARender() {
   
 }
+
 float finesseTeamB() {
   int totalShotsB = 0;
   int onTargetB = 0;
@@ -215,7 +217,6 @@ void entertainmentTeamBRender() {
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
-  float WLratioA = 0;
   int w = 0;
   int l = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
@@ -243,7 +244,6 @@ void successTeamARender() {
   
 }
 float successTeamB() {
-  float WLratioB = 0;
   int w = 0;
   int l = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
