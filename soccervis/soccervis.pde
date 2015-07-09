@@ -61,7 +61,6 @@ void refresh() {
 
   //Overview line charts
   overviewLineCharts();
-  //finesseTeamB();
 }
 
 
