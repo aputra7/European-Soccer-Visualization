@@ -17,6 +17,7 @@ float finesseTeamA() {
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
+      println(teamList.get(selectedTeamA));
       if(homeName.equals(teamList.get(selectedTeamA))) {
          hs1 = row.getInt("HS");
          homeOnTarget1 = row.getInt("HST");
@@ -27,8 +28,11 @@ float finesseTeamA() {
       
     }
     totalShotsA = hs1 + aws1;
-      onTargetA = homeOnTarget1 + awayOnTarget1;
-      finesseRatioA = onTargetA/totalShotsA;
+    onTargetA = homeOnTarget1 + awayOnTarget1;
+    shotsA = new float[2];
+    shotsA[0] = totalShotsA;
+    shotsA[1] = onTargetA;
+    finesseRatioA = onTargetA/totalShotsA;
     return finesseRatioA;
 }
 

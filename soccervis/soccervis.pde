@@ -14,6 +14,11 @@ int selectedTeamA;  //0-21 Corresponds to index of teamList
 int selectedTeamB;  //0-21 Corresponds to index of teamList
 ArrayList<String> teamList = new ArrayList<String>(); // List of team names
 
+//Global variables for modules
+/* PUT YOUR GLOBAL VARIABLES HERE*/
+float[] shotsA;
+float[] shotsB;
+
 void setup(){
   //Set up the window
   size(1440, 810); // 16:9 aspect ratio
@@ -38,8 +43,15 @@ void setup(){
      .setValue(2014)
      .setNumberOfTickMarks(22)
      .setSliderMode(Slider.FLEXIBLE)
-     ;
-     
+     ;         
+  populateList(teamA, "a");
+  populateList(teamB, "b");
+  populateList(league, "l");
+  selectedTeamA = 0;
+  selectedTeamB = 0;
+  refreshOverview();
+  
+  float dummy = finesseTeamA();  // This is only an example.
   controlP5.printPublicMethodsFor(Chart.class);
   Chart mychart = controlP5.addChart("hello")
                .setPosition((width/2) + 220 , height/2 + 200)
@@ -47,16 +59,9 @@ void setup(){
                .setRange(-20, 20)
                .setView(Chart.BAR) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
                ;
-               mychart.setData("a", ???);
-               mychart.setStrokeWeight(1.5);
-               mychart.setData("b", ???);
-               
-  populateList(teamA, "a");
-  populateList(teamB, "b");
-  populateList(league, "l");
-  selectedTeamA = 0;
-  selectedTeamB = 0;
-  refreshOverview();
+               mychart.addDataSet("a");
+               mychart.setColors("a", color(255,0,255),color(255,0,0));
+               mychart.setData("a", shotsA);
 }
 
 void draw(){
