@@ -1,5 +1,6 @@
 //Global Variables
 float finesseRatioA,finesseRatioB;
+ArrayList<Float> finesse;
 float attackScoreA,attackScoreB;
 float defenceScoreA,defenceScoreB;
 float numGoalsA,numGoalsB;
@@ -7,13 +8,20 @@ float WLratioA, WLratioB;
 
 //NUMBER OF SHOTS ON TARGET RATIO
 //0.0 - 1.0
-float finesseTeamA() {
+ArrayList<Float> finesseTeamA() {
+  finesse = new ArrayList<Float>();
   int totalShotsA = 0;
   int onTargetA = 0;
   int hs1 = 0;
   int homeOnTarget1 = 0;
   int aws1 = 0;
   int awayOnTarget1 = 0;
+  int totalShotsB = 0;
+  int onTargetB = 0;
+  int hs2 = 0;
+  int homeOnTarget2 = 0;
+  int aws2 = 0;
+  int awayOnTarget2 = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
@@ -27,24 +35,8 @@ float finesseTeamA() {
       totalShotsA = hs1 + aws1;
       onTargetA = homeOnTarget1 + awayOnTarget1;
       finesseRatioA = onTargetA/totalShotsA;
-    }
-    return finesseRatioA;
-}
-
-void finesseTeamARender() {
-  
-}
-
-float finesseTeamB() {
-  int totalShotsB = 0;
-  int onTargetB = 0;
-  int hs2 = 0;
-  int homeOnTarget2 = 0;
-  int aws2 = 0;
-  int awayOnTarget2 = 0;
-    for(TableRow row : seasons[selectedSeason].rows()) {
-      String homeName = row.getString("HomeTeam");
-      String awayName = row.getString("AwayTeam");
+      finesse.add(finesseRatioA);
+      
       if(homeName.equals(teamList.get(selectedTeamB))) {
         hs2 = row.getInt("HS");
         homeOnTarget2 = row.getInt("HST");
@@ -56,10 +48,39 @@ float finesseTeamB() {
        onTargetB = homeOnTarget2 + awayOnTarget2;
       }
       finesseRatioB = onTargetB/totalShotsB;
-      //println(finesseRatioB);
-      return finesseRatioB;
-      
+      finesse.add(finesseRatioB);
+      return finesse;
 }
+
+void finesseTeamARender() {
+  
+}
+
+//float finesseTeamB() {
+//  int totalShotsB = 0;
+//  int onTargetB = 0;
+//  int hs2 = 0;
+//  int homeOnTarget2 = 0;
+//  int aws2 = 0;
+//  int awayOnTarget2 = 0;
+//    for(TableRow row : seasons[selectedSeason].rows()) {
+//      String homeName = row.getString("HomeTeam");
+//      String awayName = row.getString("AwayTeam");
+//      if(homeName.equals(teamList.get(selectedTeamB))) {
+//        hs2 = row.getInt("HS");
+//        homeOnTarget2 = row.getInt("HST");
+//      } else if(awayName.equals(teamList.get(selectedTeamB))) {
+//        aws2 = row.getInt("AS");
+//        awayOnTarget2 = row.getInt("AST");
+//        }
+//       totalShotsB = hs2 + aws2;
+//       onTargetB = homeOnTarget2 + awayOnTarget2;
+//      }
+//      finesseRatioB = onTargetB/totalShotsB;
+//      //println(finesseRatioB);
+//      return finesseRatioB;
+//      
+//}
 
 void finesseTeamBRender() {
   
@@ -98,7 +119,7 @@ float attackTeamB() {
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayCorner2 = row.getInt("AC");
       }
-      attackScoreB = homeCorner2 + awayCorner2 + ;
+      attackScoreB = homeCorner2 + awayCorner2;
     }
     return attackScoreB;
 }
