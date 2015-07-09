@@ -39,20 +39,6 @@ void setup(){
      .setNumberOfTickMarks(22)
      .setSliderMode(Slider.FLEXIBLE)
      ;
-     
-  
-  controlP5.printPublicMethodsFor(Chart.class);
-  Chart mychart = controlP5.addChart("hello")
-               .setPosition((width/2) + 220 , height/2 + 200)
-               .setSize(200, 200)
-               .setRange(-20, 20)
-               .setView(Chart.BAR) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
-               ;
-               mychart.setData("a", finesseTeamA().get(0));
-               mychart.setStrokeWeight(1.5);
-               mychart.setData("b", finesseTeamA().get(1));
-
-  
   populateList(teamA, "a");
   populateList(teamB, "b");
   populateList(league, "l");
@@ -75,6 +61,7 @@ void refresh() {
 
   //Overview line charts
   overviewLineCharts();
+  //finesseTeamB();
 }
 
 
