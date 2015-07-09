@@ -206,7 +206,7 @@ float entertainmentTeamB() {
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayGoals2 = row.getInt("FTAG");
       }
-      numGoalsB = awayGoals2 + homeGoalS2;
+      numGoalsB = awayGoals2 + homeGoals2;
     }
     return numGoalsA;
 }
