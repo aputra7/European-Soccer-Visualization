@@ -70,6 +70,17 @@ void overviewLineCharts() {
   int y = 140;
   int x2 = (width*5/6)-w/2;
 
+  if(selectedSeason == 21) {
+    stroke(255, 255, 0);
+    fill(255, 0, 0);
+    textSize(11);
+    text(str(pointsA[21]), 421+10, y);
+    line(421, y, 421, y+h);
+    fill(0, 0, 255);
+    textSize(11);
+    text(str(pointsB[21]), 1381+10, y);
+    line(1381, y, 1381, y+h);
+  }
   stroke(0);
   for(int i = 0; i<21; i++) {
     //A
@@ -77,19 +88,38 @@ void overviewLineCharts() {
     int yPos1 = (int)((1-(pointsA[i]/100.0))*h + y);
     int xPos2 = (int)((w/22.0*(i+1)) + x1);
     int yPos2 = (int)((1-(pointsA[(i+1)]/100.0))*h + y);
+    if(i == selectedSeason) {
+      stroke(255, 255, 0);
+      line(xPos1, y, xPos1, y+h);
+      stroke(0);
+      fill(255, 0, 0);
+      textSize(11);
+      text(str(pointsA[i]), xPos1+10, max(yPos1-25, y));
+    }
     fill(255, 0, 0);
+    line(xPos1, yPos1, xPos2, yPos2);
     ellipse(xPos1, yPos1, 5, 5);
     ellipse(xPos2, yPos2, 5, 5);
-    line(xPos1, yPos1, xPos2, yPos2);
+    
+
     //B
     xPos1 = (int)((w/22.0*i) + x2);
     yPos1 = (int)((1-(pointsB[i]/100.0))*h + y);
     xPos2 = (int)((w/22.0*(i+1)) + x2);
     yPos2 = (int)((1-(pointsB[(i+1)]/100.0))*h + y);
+    if(i == selectedSeason) {
+      stroke(255, 255, 0);
+      line(xPos1, y, xPos1, y+h);
+      stroke(0);
+      fill(0, 0, 255);
+      textSize(10);
+      text(str(pointsB[i]), xPos1+10, max(yPos1-25, y));
+    }
     fill(0, 0, 255);
+    line(xPos1, yPos1, xPos2, yPos2);
     ellipse(xPos1, yPos1, 5, 5);
     ellipse(xPos2, yPos2, 5, 5);
-    line(xPos1, yPos1, xPos2, yPos2);
+    
   }
   
   textAlign(RIGHT);
