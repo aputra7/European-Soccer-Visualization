@@ -19,6 +19,22 @@ ArrayList<String> teamList = new ArrayList<String>(); // List of team names
 float[] shotsA;
 float[] shotsB;
 
+//[0] = corners , [1] = offsides
+float[] attackA;
+float[] attackB;
+
+//[0] = fouls, [1] = yc, [2] = rc
+float[] defenceA;
+float[] defenceB;
+
+//[0] = homeGoals, [1] = awayGoals
+float[] goalsA;
+float[] goalsB;
+
+//[0] = win, [1] = loss
+float[] winLossA;
+float[] winLossB;
+
 void setup(){
   //Set up the window
   size(1440, 810); // 16:9 aspect ratio

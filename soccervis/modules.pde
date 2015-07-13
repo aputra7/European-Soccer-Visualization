@@ -59,7 +59,10 @@ float finesseTeamB() {
         }
       }
       totalShotsB = hs2 + aws2;
-       onTargetB = homeOnTarget2 + awayOnTarget2;
+      onTargetB = homeOnTarget2 + awayOnTarget2;
+      shotsB = new float[2];
+      shotsB[0] = totalShotsA;
+      shotsB[1] = onTargetA;
       finesseRatioB = onTargetB/totalShotsB;
       return finesseRatioB;
       
@@ -88,6 +91,9 @@ float attackTeamA() {
       }
       attackScoreA = homeCorner1 + homeOffsides1 + awayCorner1 + awayOffsides1;
     }
+    attackA =  new float[2];
+    attackA[0] = homCorner1 + awayCorner1;
+    attackA[1] = homeOffsides1 + awayOffsides1;
     return attackScoreA;
 }
 
@@ -112,6 +118,9 @@ float attackTeamB() {
       }
       attackScoreB = homeCorner2 + homeOffsides2 + awayCorner2 + awayOffsides2;
     }
+    attackB =  new float[2];
+    attackB[0] = homCorner2 + awayCorner2;
+    attackB[1] = homeOffsides2 + awayOffsides2;
     return attackScoreB;
 }
 
@@ -142,6 +151,10 @@ float defenseTeamA() {
       }
       defenceScoreA = homeFouls1 + homeYC1 + homeRC1 + awayFouls1 + awayYC1 + awayRC1;
     }
+    defenceA = new float[3];
+    defenceA[0] = homeFouls1 + awayFouls1;
+    defenceA[1] = homeYC1 + awayYC1;
+    defenceA[2] = homeRC1 + awayRC1;
     return defenceScoreA;
 }
 
@@ -170,6 +183,10 @@ float defenseTeamB() {
       }
       defenceScoreB = homeFouls2 + homeYC2 + homeRC2 + awayFouls2 + awayYC2 + awayRC2;
     }
+    defenceB = new float[3];
+    defenceB[0] = homeFouls2 + awayFouls2;
+    defenceB[1] = homeYC2 + awayYC2;
+    defenceB[2] = homeRC2 + awayRC2;
     return defenceScoreB;
 }
 
@@ -193,6 +210,9 @@ float entertainmentTeamA() {
       }
       numGoalsA = awayGoals1 + homeGoals1;
     }
+    goalsA = new float[2];
+    goalsA[0] = homeGoals1;
+    goalsA[1] = awayGoals1;
     return numGoalsA;
 }
 
@@ -213,7 +233,10 @@ float entertainmentTeamB() {
       }
       numGoalsB = awayGoals2 + homeGoals2;
     }
-    return numGoalsA;
+    goalsB = new float[2];
+    goalsB[0] = homeGoals2;
+    goalsB[1] = awayGoals2;
+    return numGoalsB;
 }
 
 void entertainmentTeamBRender() {
@@ -242,6 +265,9 @@ float successTeamA() {
       }
       WLratioA = w / (w+l);
     }
+    winLossA = new float[2];
+    winLossA[0] = w;
+    winLossA[1] = l;
     return WLratioA;
 }
 
@@ -269,6 +295,9 @@ float successTeamB() {
       }
       WLratioB = w / (w+l);
     }
+    winLossB = new float[2];
+    winLossB[0] = w;
+    winLossB[1] = l;
     return WLratioB;
 }
 
