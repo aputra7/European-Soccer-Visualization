@@ -31,7 +31,7 @@ float[] defenceB;
 float[] goalsA;
 float[] goalsB;
 
-//[0] = win, [1] = loss
+//[0] = win, [1] = loss [2] = draw
 float[] winLossA;
 float[] winLossB;
 

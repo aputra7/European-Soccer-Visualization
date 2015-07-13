@@ -254,6 +254,7 @@ void entertainmentTeamBRender() {
 float successTeamA() {
   int w = 0;
   int l = 0;
+  int d = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
@@ -269,42 +270,54 @@ float successTeamA() {
         } else if(row.getInt("FTAG") > row.getInt("FTHG")){
           l++;
         }
+      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+        if(row.getInt("FTAG") == row.getInt("FTHG")){
+          d++;
+        }
       }
-      WLratioA = w / (w+l);
     }
-    winLossA = new float[2];
+    WLratioA = w / (w+l+d);
+    winLossA = new float[3];
     winLossA[0] = w;
     winLossA[1] = l;
+    winLossA[2] = d;
     return WLratioA;
 }
 
 void successTeamARender() {
   
 }
+
 float successTeamB() {
   int w = 0;
   int l = 0;
+  int d = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
-      if(homeName.equals(teamList.get(selectedTeamA))) {
+      if(homeName.equals(teamList.get(selectedTeamB))) {
         if(row.getInt("FTHG") > row.getInt("FTAG")){
           w++;
         } else if(row.getInt("FTHG") > row.getInt("FTAG")){
           l++;
         }
-      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+      } else if(awayName.equals(teamList.get(selectedTeamB))) {
         if(row.getInt("FTAG") > row.getInt("FTHG")){
           w++;
         } else if(row.getInt("FTAG") > row.getInt("FTHG")){
           l++;
         }
+      }else if(awayName.equals(teamList.get(selectedTeamB))) {
+        if(row.getInt("FTAG") == row.getInt("FTHG")){
+          d++;
+        }
       }
-      WLratioB = w / (w+l);
     }
+    WLratioB = w / (w+l+d);
     winLossB = new float[2];
     winLossB[0] = w;
     winLossB[1] = l;
+    winLossB[2] = d;
     return WLratioB;
 }
 
