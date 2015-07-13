@@ -17,7 +17,6 @@ float finesseTeamA() {
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
-      println(teamList.get(selectedTeamA));
       if(homeName.equals(teamList.get(selectedTeamA))) {
          hs1 = row.getInt("HS");
          homeOnTarget1 = row.getInt("HST");
