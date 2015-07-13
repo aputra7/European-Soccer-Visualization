@@ -61,8 +61,8 @@ float finesseTeamB() {
       totalShotsB = hs2 + aws2;
       onTargetB = homeOnTarget2 + awayOnTarget2;
       shotsB = new float[2];
-      shotsB[0] = totalShotsA;
-      shotsB[1] = onTargetA;
+      shotsB[0] = totalShotsB;
+      shotsB[1] = onTargetB;
       finesseRatioB = onTargetB/totalShotsB;
       return finesseRatioB;
       
@@ -92,7 +92,7 @@ float attackTeamA() {
       attackScoreA = homeCorner1 + homeOffsides1 + awayCorner1 + awayOffsides1;
     }
     attackA =  new float[2];
-    attackA[0] = homCorner1 + awayCorner1;
+    attackA[0] = homeCorner1 + awayCorner1;
     attackA[1] = homeOffsides1 + awayOffsides1;
     return attackScoreA;
 }
@@ -119,7 +119,7 @@ float attackTeamB() {
       attackScoreB = homeCorner2 + homeOffsides2 + awayCorner2 + awayOffsides2;
     }
     attackB =  new float[2];
-    attackB[0] = homCorner2 + awayCorner2;
+    attackB[0] = homeCorner2 + awayCorner2;
     attackB[1] = homeOffsides2 + awayOffsides2;
     return attackScoreB;
 }
