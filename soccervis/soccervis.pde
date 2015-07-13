@@ -120,6 +120,9 @@ void populateList(DropdownList ddl, String type) {
   }
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
+  
+  defenseTeamA();
+  defenseTeamB();
 }
 
 // This is a control P5's dropdown list handler
@@ -130,8 +133,10 @@ void controlEvent(ControlEvent theEvent) {
     int whichDropDownList = Integer.parseInt(theEvent.getGroup().toString().substring(0, 1));
     if(whichDropDownList == 0) {
       selectedTeamA = (int)theEvent.getGroup().getValue();
+      defenseTeamA();
     } else if(whichDropDownList == 1) {
       selectedTeamB = (int)theEvent.getGroup().getValue();
+      defenseTeamB();
     }
     refreshOverview();
     //dropdownListSelection[Integer.parseInt(theEvent.getGroup().toString().substring(0, 1))] = int(theEvent.getGroup().getValue());

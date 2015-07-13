@@ -148,3 +148,4 @@ void renderLogos() {
   rect((width/6)-50, 30, 100, 100);
   rect((width*5/6)-50, 30, 100, 100);
 }
+
