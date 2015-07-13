@@ -156,3 +156,8 @@ void controlEvent(ControlEvent theEvent) {
 void slider(int sliderVal) {
   selectedSeason = sliderVal - 1993;
 }
+
+void mousePressed(){
+  //Unprojection to find 3D click ray
+   println("The mouse button " + mouseButton + " was pressed. You mouseClickCheck pixel (" + mouseX + "," + mouseY + ").");
+}
