@@ -169,6 +169,8 @@ void defenseRender() {
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   
+  rect(scale+25,scale+10,defenceA[0],scale-5);
+  
   popMatrix();
 }
 float defenseTeamB() {
