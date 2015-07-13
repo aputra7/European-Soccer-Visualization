@@ -14,6 +14,7 @@ int selectedTeamA;  //0-21 Corresponds to index of teamList
 int selectedTeamB;  //0-21 Corresponds to index of teamList
 ArrayList<String> teamList = new ArrayList<String>(); // List of team names
 boolean isSliderListenerReady = false;
+float[] pentagonValues; //0-10 A,B,A,B,A,B...
 
 //Global variables for modules
 float[] shotsA;
@@ -67,8 +68,9 @@ void setup(){
   selectedTeamB = 0;
   selectedSeason = 21;
   selectedLeague = 0;
-  refreshOverview();
   isSliderListenerReady = true;
+  pentagonValues = new float[10];
+  refreshOverview();
   updateModules();
 }
 
@@ -158,16 +160,16 @@ void slider(int sliderVal) {
 }
 
 void updateModules() {
-  finesseTeamA();
-  finesseTeamB();
-  attackTeamA();
-  attackTeamB();
-  defenseTeamA();
-  defenseTeamB();
-  entertainmentTeamA();
-  entertainmentTeamB();
-  successTeamA();
-  successTeamB();
+  pentagonValues[0] = finesseTeamA();
+  pentagonValues[1] = finesseTeamB();
+  pentagonValues[2] = attackTeamA();
+  pentagonValues[3] = attackTeamB();
+  pentagonValues[4] = defenseTeamA();
+  pentagonValues[5] = defenseTeamB();
+  pentagonValues[6] = entertainmentTeamA();
+  pentagonValues[7] = entertainmentTeamB();
+  pentagonValues[8] = successTeamA();
+  pentagonValues[9] = successTeamB();
 }
 
 void mousePressed(){

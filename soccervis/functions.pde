@@ -144,8 +144,13 @@ void overviewLineCharts() {
   rect(x2, y, w, h);
 }
 
+void renderPentagon(float finneseA, float finneseB, float attackA, float attackB, float defenseA, float defenseB,
+                      float entertainmentA, float entertainmentB, float successA, float successB) {
+  
+  
+}
+
 void renderLogos() {
   rect((width/6)-50, 30, 100, 100);
   rect((width*5/6)-50, 30, 100, 100);
 }
-
