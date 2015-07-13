@@ -36,7 +36,7 @@ float finesseTeamA() {
     return finesseRatioA;
 }
 
-void finesseTeamARender() {
+void finesseRender() {
   
 }
 
@@ -68,9 +68,6 @@ float finesseTeamB() {
       
 }
 
-void finesseTeamBRender() {
-  
-}
 //NUMBER OF CORNERS & OFFSIDES
 //0.0 - 50.0
 float attackTeamA() {
@@ -158,8 +155,21 @@ float defenseTeamA() {
     return defenceScoreA;
 }
 
-void defenseTeamARender() {
+void defenseRender() {
+  pushMatrix();
+  translate(0, height*2/5);
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+
+  textSize(20);
+  textAlign(RIGHT);
+  text("Defense", localWidth-10, 20);
+  rect(0, 0, localWidth, localHeight);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   
+  popMatrix();
 }
 float defenseTeamB() {
   float defenceScoreB = 0;
@@ -168,15 +178,15 @@ float defenseTeamB() {
   int homeYC2 = 0;
   int awayYC2 = 0;
   int homeRC2 = 0;
-  int awayRC2 = 0;
+  int awayRC2 = 0;                                                                                      
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
-      if(homeName.equals(teamList.get(selectedTeamA))) {
+      if(homeName.equals(teamList.get(selectedTeamB))) {
          homeFouls2 = row.getInt("HF");
          homeYC2 = row.getInt("HY");
          homeRC2 = row.getInt("HR");
-      } else if(awayName.equals(teamList.get(selectedTeamA))) {
+      } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayFouls2 = row.getInt("AF");
          awayYC2 = row.getInt("AY");
          awayRC2 = row.getInt("AR");
@@ -190,9 +200,6 @@ float defenseTeamB() {
     return defenceScoreB;
 }
 
-void defenseTeamBRender() {
-  
-}
 // NUMBER OF GOALS
 //0.0 - 100.0
 float entertainmentTeamA() {

@@ -67,17 +67,6 @@ void setup(){
   selectedTeamB = 0;
   refreshOverview();
   
-  float dummy = finesseTeamA();  // This is only an example.
-  controlP5.printPublicMethodsFor(Chart.class);
-  Chart mychart = controlP5.addChart("hello")
-               .setPosition((width/2) + 220 , height/2 + 200)
-               .setSize(200, 200)
-               .setRange(-20, 20)
-               .setView(Chart.BAR) // use Chart.LINE, Chart.PIE, Chart.AREA, Chart.BAR_CENTERED
-               ;
-               mychart.addDataSet("a");
-               mychart.setColors("a", color(255,0,255),color(255,0,0));
-               mychart.setData("a", shotsA);
 }
 
 void draw(){
@@ -94,7 +83,7 @@ void refresh() {
 
   //Overview line charts
   overviewLineCharts();
-  //finesseTeamB();
+  defenseRender();
 }
 
 
