@@ -8,14 +8,14 @@ Table[] seasons;
 DropdownList teamA, teamB, league;
 int[] pointsA;      //for overview line charts
 int[] pointsB;      //for overview line charts
-int selectedLeague;  //YET TO BE IMPLEMENTED.
-int selectedSeason; //0-21 where 1993/1994 = 0 and 2014/2015 = 21
+int selectedLeague = 0;  //YET TO BE IMPLEMENTED.
+int selectedSeason = 21; //0-21 where 1993/1994 = 0 and 2014/2015 = 21
 int selectedTeamA;  //0-21 Corresponds to index of teamList
 int selectedTeamB;  //0-21 Corresponds to index of teamList
 ArrayList<String> teamList = new ArrayList<String>(); // List of team names
+boolean isSliderListenerReady = false;
 
 //Global variables for modules
-/* PUT YOUR GLOBAL VARIABLES HERE*/
 float[] shotsA;
 float[] shotsB;
 
@@ -65,8 +65,11 @@ void setup(){
   populateList(league, "l");
   selectedTeamA = 0;
   selectedTeamB = 0;
+  selectedSeason = 21;
+  selectedLeague = 0;
   refreshOverview();
-  
+  isSliderListenerReady = true;
+  updateModules();
 }
 
 void draw(){
@@ -83,7 +86,11 @@ void refresh() {
 
   //Overview line charts
   overviewLineCharts();
+  finesseRender();
+  attackRender();
   defenseRender();
+  entertainmentRender();
+  successRender();
 }
 
 
@@ -120,9 +127,6 @@ void populateList(DropdownList ddl, String type) {
   }
   ddl.setColorBackground(color(60));
   ddl.setColorActive(color(255, 128));
-  
-  defenseTeamA();
-  defenseTeamB();
 }
 
 // This is a control P5's dropdown list handler
@@ -133,11 +137,10 @@ void controlEvent(ControlEvent theEvent) {
     int whichDropDownList = Integer.parseInt(theEvent.getGroup().toString().substring(0, 1));
     if(whichDropDownList == 0) {
       selectedTeamA = (int)theEvent.getGroup().getValue();
-      defenseTeamA();
     } else if(whichDropDownList == 1) {
       selectedTeamB = (int)theEvent.getGroup().getValue();
-      defenseTeamB();
     }
+    updateModules();
     refreshOverview();
     //dropdownListSelection[Integer.parseInt(theEvent.getGroup().toString().substring(0, 1))] = int(theEvent.getGroup().getValue());
   } 
@@ -148,7 +151,15 @@ void controlEvent(ControlEvent theEvent) {
 
 // This is a slider Listener
 void slider(int sliderVal) {
-  selectedSeason = sliderVal - 1993;
+  if(selectedSeason != (sliderVal - 1993)) {
+    selectedSeason = sliderVal - 1993;
+    if(isSliderListenerReady) updateModules();
+  }
+}
+
+void updateModules() {
+  defenseTeamA();
+  defenseTeamB();
 }
 
 void mousePressed(){

@@ -94,7 +94,7 @@ float attackTeamA() {
     return attackScoreA;
 }
 
-void attackTeamARender() {
+void attackRender() {
   
 }
 float attackTeamB() {
@@ -121,9 +121,6 @@ float attackTeamB() {
     return attackScoreB;
 }
 
-void attackTeamBRender() {
-  
-}
 // NUMBER OF FOULS + CARDS
 //0.0 - 100.0
 float defenseTeamA() {
@@ -225,7 +222,7 @@ float entertainmentTeamA() {
     return numGoalsA;
 }
 
-void entertainmentTeamARender() {
+void entertainmentRender() {
   
 }
 float entertainmentTeamB() {
@@ -248,9 +245,6 @@ float entertainmentTeamB() {
     return numGoalsB;
 }
 
-void entertainmentTeamBRender() {
-  
-}
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
@@ -286,7 +280,7 @@ float successTeamA() {
     return WLratioA;
 }
 
-void successTeamARender() {
+void successRender() {
   
 }
 
@@ -321,8 +315,4 @@ float successTeamB() {
     winLossB[1] = l;
     winLossB[2] = d;
     return WLratioB;
-}
-
-void successTeamBRender() {
-  
 }
