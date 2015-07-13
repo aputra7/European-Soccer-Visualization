@@ -169,6 +169,7 @@ void defenseRender() {
   rect(0, 0, localWidth, localHeight);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //TeamA Yellow
   rect(scale+25,scale+20,defenceA[0]*10,scale);
