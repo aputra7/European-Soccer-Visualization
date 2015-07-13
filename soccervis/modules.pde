@@ -146,8 +146,8 @@ float defenseTeamA() {
          awayYC1 = row.getInt("AY");
          awayRC1 = row.getInt("AR");
       }
-      defenceScoreA = homeFouls1 + homeYC1 + homeRC1 + awayFouls1 + awayYC1 + awayRC1;
     }
+    defenceScoreA = homeFouls1 + homeYC1 + homeRC1 + awayFouls1 + awayYC1 + awayRC1;
     defenceA = new float[3];
     defenceA[0] = homeFouls1 + awayFouls1;
     defenceA[1] = homeYC1 + awayYC1;
@@ -168,9 +168,27 @@ void defenseRender() {
   rect(0, 0, localWidth, localHeight);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
-
-  rect(scale+25,scale+10,defenceA[0],scale-5);
   
+  //TeamA Yellow
+  rect(scale+25,scale+20,defenceA[0]*10,scale);
+  fill(255, 255, 0);
+  rect(scale+25,scale+20,defenceA[1]*10,scale);
+  noFill(); 
+  //TeamB Yellow
+  rect(scale+25,scale+50,defenceB[0]*10,scale);
+  fill(255, 255, 0);
+  rect(scale+25,scale+50,defenceB[1]*10,scale);
+  noFill(); 
+  //TeamA Red
+  rect(scale+25,scale+100,defenceA[0]*10,scale);
+  fill(255, 0, 0);
+  rect(scale+25,scale+100,defenceA[2]*10,scale);
+  noFill(); 
+  //TeamB Red
+  rect(scale+25,scale+130,defenceB[0]*10,scale);
+  fill(255, 0, 0);
+  rect(scale+25,scale+130,defenceB[2]*10,scale);
+  noFill(); 
   popMatrix();
 }
 float defenseTeamB() {
