@@ -314,7 +314,7 @@ float successTeamB() {
       }
     }
     WLratioB = w / (w+l+d);
-    winLossB = new float[2];
+    winLossB = new float[3];
     winLossB[0] = w;
     winLossB[1] = l;
     winLossB[2] = d;
