@@ -158,8 +158,16 @@ void slider(int sliderVal) {
 }
 
 void updateModules() {
+  finesseTeamA();
+  finesseTeamB();
+  attackTeamA();
+  attackTeamB();
   defenseTeamA();
   defenseTeamB();
+  entertainmentTeamA();
+  entertainmentTeamB();
+  successTeamA();
+  successTeamB();
 }
 
 void mousePressed(){
