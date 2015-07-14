@@ -67,8 +67,8 @@ void finesseRender() {
   
   //DRAW GOAL IMAGE
   translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
-  rect(70, 40, localWidth/5.0+50,localHeight/5.0+50);
-  rect(80, 50, localWidth/5.0+30,localHeight/5.0+40);
+  rect(70, 40, localWidth/5.0+100,localHeight/5.0+50);
+  rect(80, 50, localWidth/5.0+80,localHeight/5.0+40);
   line(70, localHeight/5.0+90, 50, localHeight/5.0+120);
   line(70+localWidth/5.0+50, localHeight/5.0+90, 90 + (localWidth/5.0+50), localHeight/5.0+120);
   line(50, localHeight/5.0+120,90 + (localWidth/5.0+50), localHeight/5.0+120);
@@ -181,8 +181,8 @@ void attackRender() {
   line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
-  //rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
-  //rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
+  rect(scale+25 + localWidth*2,scale*3,attackA[0],scale);
+  rect(scale+25 + localWidth*2,scale*5.3,attackB[0],scale);
   
   popMatrix();
 }
