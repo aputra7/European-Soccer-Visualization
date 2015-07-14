@@ -598,9 +598,9 @@ float successTeamA() {
     if((w+l+d) != 0) WLratioA = ((float)w) / (w+l+d);
     else WLratioA = 0.0;
     winLossA = new float[3];
-    winLossA[0] = w;
-    winLossA[1] = l;
-    winLossA[2] = d;
+    winLossA[0] = w*10;
+    winLossA[1] = l*10;
+    winLossA[2] = d*10;
     return WLratioA;
 }
 
@@ -630,8 +630,16 @@ void successRender() {
   textAlign(RIGHT);
   text("Success", localWidth*2-10, scale);
   rect(0, 0, localWidth, localHeight);
-  line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale);
-  line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale, localHeight*2-scale);
+  line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
+  line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
+  //A
+  rect(localWidth + scale*4, localHeight*2-scale, scale*2, -winLossA[0]);
+  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0], scale*2, -winLossA[1]);
+  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0] - winLossA[1], scale*2, -winLossA[2]);
+  //B
+  rect(localWidth + scale*8, localHeight*2-scale, scale*2, -winLossB[0]);
+  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0], scale*2, -winLossB[1]);
+  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   
 
   popMatrix();
@@ -667,8 +675,8 @@ float successTeamB() {
     if((w+l+d) != 0) WLratioB = ((float)w) / (w+l+d);
     else WLratioB = 0.0;
     winLossB = new float[3];
-    winLossB[0] = w;
-    winLossB[1] = l;
-    winLossB[2] = d;
+    winLossB[0] = w*10;
+    winLossB[1] = l*10;
+    winLossB[2] = d*10;
     return WLratioB;
 }
