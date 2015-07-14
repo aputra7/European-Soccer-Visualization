@@ -37,10 +37,55 @@ float finesseTeamA() {
 }
 
 void finesseRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
   if(selectedSeason < 7) {
-    //PUT "DATA UNAVAILABLE" HERE
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 1180,444); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Attack", localWidth-10, 20);
+    rect(0, 0, localWidth, localHeight);
+    popMatrix();
     return;
   }
+  pushMatrix();
+  translate(0, height*2/5);
+  
+  textSize(20);
+  textAlign(RIGHT);
+  text("Defense", localWidth-10, 20);
+  rect(localWidth*2, 0, localWidth*3, localHeight);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
+  
+  //TeamA Yellow
+  rect(scale+25,scale+20,defenceA[0]*10,scale);
+  fill(255, 255, 0);
+  rect(scale+25,scale+20,defenceA[1]*10,scale);
+  noFill(); 
+  //TeamB Yellow
+  rect(scale+25,scale+50,defenceB[0]*10,scale);
+  fill(255, 255, 0);
+  rect(scale+25,scale+50,defenceB[1]*10,scale);
+  noFill(); 
+  //TeamA Red
+  rect(scale+25,scale+100,defenceA[0]*10,scale);
+  fill(255, 0, 0);
+  rect(scale+25,scale+100,defenceA[2]*10,scale);
+  noFill(); 
+  //TeamB Red
+  rect(scale+25,scale+130,defenceB[0]*10,scale);
+  fill(255, 0, 0);
+  rect(scale+25,scale+130,defenceB[2]*10,scale);
+  noFill(); 
+  popMatrix();
 }
 
 float finesseTeamB() {
@@ -95,7 +140,35 @@ float attackTeamA() {
 }
 
 void attackRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 1180,600); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Attack", localWidth-10, 20);
+    rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
+    popMatrix();
+    return;
+  }
+  pushMatrix();
+  translate(0, height*2/5);
   
+  textSize(20);
+  textAlign(RIGHT);
+  text("Defense", localWidth-10, 20);
+  rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  
+  //DRAW GOAL IMAGE
+  popMatrix();
 }
 float attackTeamB() {
   if(selectedSeason < 7) return 0.0;
