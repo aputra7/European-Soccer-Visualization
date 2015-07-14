@@ -142,6 +142,14 @@ void overviewLineCharts() {
   noFill();
   rect(x1, y, w, h);
   rect(x2, y, w, h);
+  textSize(11);
+  textAlign(CENTER);
+  text("Pts", 40, 135);
+  text("Pts", 1000, 135);
+  text("Season", 225, 315);
+  text("Season", 1185, 315);
+  textSize(12);
+  text("Select Season", 540, 295);
 }
 
 void renderPentagon() {
@@ -196,9 +204,19 @@ void renderPentagon() {
   noFill();
   stroke(0);
   popMatrix();
+  
+  textSize(12);
+  fill(0);
+  textAlign(CENTER);
+  text("Finnese", width/2, 35);
+  text("Attack", 575, 135);
+  text("Defense", 645, 285);
+  text("Entertainment", 800, 285);
+  text("Success", 865, 135);
 }
 
 void renderLogos() {
+  noFill();
   rect((width/6)-50, 30, 100, 100);
   rect((width*5/6)-50, 30, 100, 100);
 }
