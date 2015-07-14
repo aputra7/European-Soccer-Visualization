@@ -386,16 +386,35 @@ float entertainmentTeamA() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
-         homeGoals1 = row.getInt("FTHG");
+         homeGoals1 += row.getInt("FTHG");
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
-         awayGoals1 = row.getInt("FTAG");
+         awayGoals1 += row.getInt("FTAG");
       }
     }
     numGoalsA = awayGoals1 + homeGoals1;
     goalsA = new float[2];
     goalsA[0] = homeGoals1;
     goalsA[1] = awayGoals1;
-    return numGoalsA;
+    
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[i].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(i))) {
+         temp += row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(i))) {
+         temp += row.getInt("FTAG");
+      }
+    }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+
+    if(max == 0) return 0.0;
+    return numGoalsA/max;
 }
 
 void entertainmentRender() {
@@ -406,7 +425,7 @@ void entertainmentRender() {
     fill(0);
     textSize(20);
     textAlign(CENTER);
-    text("DATA UNAVAILABLE",220,680); 
+    text("DATA UNAVAILABLE",220,680);
     noFill();
     pushMatrix();
     translate(0, height*2/5);
@@ -441,8 +460,8 @@ float entertainmentTeamB() {
   int awayGoals2 = 0;
   int homeGoals2 = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
-      String homeName = row.getString("HomeTeam");
-      String awayName = row.getString("AwayTeam");
+      String homeName += row.getString("HomeTeam");
+      String awayName += row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
          homeGoals2 = row.getInt("FTHG");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
@@ -453,7 +472,26 @@ float entertainmentTeamB() {
     goalsB = new float[2];
     goalsB[0] = homeGoals2;
     goalsB[1] = awayGoals2;
-    return numGoalsB;
+    
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[i].rows()) {
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
+      if(homeName.equals(teamList.get(i))) {
+         temp += row.getInt("FTHG");
+      } else if(awayName.equals(teamList.get(i))) {
+         temp += row.getInt("FTAG");
+      }
+    }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+
+    if(max == 0) return 0.0;
+    return numGoalsB/max;
 }
 
 // WIN LOSS RATIO
