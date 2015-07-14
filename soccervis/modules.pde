@@ -400,7 +400,7 @@ float entertainmentTeamA() {
     float max = 0;
     float temp = 0;
     for(int i = 0; i<teamList.size(); i++) {
-      for(TableRow row : seasons[i].rows()) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(i))) {
@@ -412,7 +412,7 @@ float entertainmentTeamA() {
       if(temp > max) max = temp;
       temp = 0;
     }
-
+    println(numGoalsA + " " + max);
     if(max == 0) return 0.0;
     return numGoalsA/max;
 }
@@ -477,7 +477,7 @@ float entertainmentTeamB() {
     float max = 0;
     float temp = 0;
     for(int i = 0; i<teamList.size(); i++) {
-      for(TableRow row : seasons[i].rows()) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(i))) {
