@@ -32,7 +32,7 @@ float finesseTeamA() {
     shotsA = new float[2];
     shotsA[0] = totalShotsA;
     shotsA[1] = onTargetA;
-    finesseRatioA = onTargetA/totalShotsA;
+    finesseRatioA = ((float)(onTargetA))/totalShotsA;
     return finesseRatioA;
 }
 
@@ -93,7 +93,7 @@ float finesseTeamB() {
       shotsB = new float[2];
       shotsB[0] = totalShotsB;
       shotsB[1] = onTargetB;
-      finesseRatioB = onTargetB/totalShotsB;
+      finesseRatioB = ((float)onTargetB)/totalShotsB;
       return finesseRatioB;
       
 }
@@ -109,15 +109,34 @@ float attackTeamA() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
-         homeCorner1 = row.getInt("HC");
+         homeCorner1 += row.getInt("HC");
+         attackScoreA += row.getInt("HC");
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
-         awayCorner1 = row.getInt("AC");
+         awayCorner1 += row.getInt("AC");
+         attackScoreA += row.getInt("AC");
       }
-      attackScoreA = homeCorner1 + awayCorner1;
     }
     attackA =  new float[1];
     attackA[0] = homeCorner1 + awayCorner1;
-    return attackScoreA;
+    
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
+        String homeName = row.getString("HomeTeam");
+        String awayName = row.getString("AwayTeam");
+        if(homeName.equals(teamList.get(i))) {
+           temp += row.getInt("HC");
+        } else if(awayName.equals(teamList.get(i))) {
+           temp += row.getInt("AC");
+        }
+      }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+    if(max == 0) return 0.0;
+    return attackScoreA/max;
 }
 
 void attackRender() {
@@ -159,15 +178,34 @@ float attackTeamB() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
-         homeCorner2 = row.getInt("HC");
+         homeCorner2 += row.getInt("HC");
+         attackScoreB += row.getInt("HC");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
-         awayCorner2 = row.getInt("AC");
+         awayCorner2 += row.getInt("AC");
+         attackScoreB += row.getInt("AC");
       }
-      attackScoreB = homeCorner2 + awayCorner2;
     }
     attackB =  new float[1];
     attackB[0] = homeCorner2 + awayCorner2;
-    return attackScoreB;
+
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
+        String homeName = row.getString("HomeTeam");
+        String awayName = row.getString("AwayTeam");
+        if(homeName.equals(teamList.get(i))) {
+           temp += row.getInt("HC");
+        } else if(awayName.equals(teamList.get(i))) {
+           temp += row.getInt("AC");
+        }
+      }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+    if(max == 0) return 0.0;
+    return attackScoreB/max;
 }
 
 // NUMBER OF FOULS + CARDS
@@ -185,13 +223,13 @@ float defenseTeamA() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
-         homeFouls1 = row.getInt("HF");
-         homeYC1 = row.getInt("HY");
-         homeRC1 = row.getInt("HR");
+         homeFouls1 += row.getInt("HF");
+         homeYC1 += row.getInt("HY");
+         homeRC1 += row.getInt("HR");
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
-         awayFouls1 = row.getInt("AF");
-         awayYC1 = row.getInt("AY");
-         awayRC1 = row.getInt("AR");
+         awayFouls1 += row.getInt("AF");
+         awayYC1 += row.getInt("AY");
+         awayRC1 += row.getInt("AR");
       }
     }
     defenceScoreA = homeFouls1 + homeYC1 + homeRC1 + awayFouls1 + awayYC1 + awayRC1;
@@ -199,7 +237,30 @@ float defenseTeamA() {
     defenceA[0] = homeFouls1 + awayFouls1;
     defenceA[1] = homeYC1 + awayYC1;
     defenceA[2] = homeRC1 + awayRC1;
-    return defenceScoreA;
+    
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
+        String homeName = row.getString("HomeTeam");
+        String awayName = row.getString("AwayTeam");
+        if(homeName.equals(teamList.get(i))) {
+           temp += row.getInt("HF");
+           temp += row.getInt("HY");
+           temp += row.getInt("HR");
+        } else if(awayName.equals(teamList.get(i))) {
+           temp += row.getInt("AF");
+           temp += row.getInt("AY");
+           temp += row.getInt("AR");
+        }
+      }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+    
+    if(max == 0) return 0.0;
+    return defenceScoreA/max;
 }
 
 void defenseRender() {
@@ -266,21 +327,44 @@ float defenseTeamB() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
-         homeFouls2 = row.getInt("HF");
-         homeYC2 = row.getInt("HY");
-         homeRC2 = row.getInt("HR");
+         homeFouls2 += row.getInt("HF");
+         homeYC2 += row.getInt("HY");
+         homeRC2 += row.getInt("HR");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
-         awayFouls2 = row.getInt("AF");
-         awayYC2 = row.getInt("AY");
-         awayRC2 = row.getInt("AR");
+         awayFouls2 += row.getInt("AF");
+         awayYC2 += row.getInt("AY");
+         awayRC2 += row.getInt("AR");
       }
-      defenceScoreB = homeFouls2 + homeYC2 + homeRC2 + awayFouls2 + awayYC2 + awayRC2;
     }
+    defenceScoreB = homeFouls2 + homeYC2 + homeRC2 + awayFouls2 + awayYC2 + awayRC2;
     defenceB = new float[3];
     defenceB[0] = homeFouls2 + awayFouls2;
     defenceB[1] = homeYC2 + awayYC2;
     defenceB[2] = homeRC2 + awayRC2;
-    return defenceScoreB;
+    
+    //Normalizer
+    float max = 0;
+    float temp = 0;
+    for(int i = 0; i<teamList.size(); i++) {
+      for(TableRow row : seasons[selectedSeason].rows()) {
+        String homeName = row.getString("HomeTeam");
+        String awayName = row.getString("AwayTeam");
+        if(homeName.equals(teamList.get(i))) {
+           temp += row.getInt("HF");
+           temp += row.getInt("HY");
+           temp += row.getInt("HR");
+        } else if(awayName.equals(teamList.get(i))) {
+           temp += row.getInt("AF");
+           temp += row.getInt("AY");
+           temp += row.getInt("AR");
+        }
+      }
+      if(temp > max) max = temp;
+      temp = 0;
+    }
+
+    if(max == 0) return 0.0;
+    return defenceScoreB/max;
 }
 
 // NUMBER OF GOALS
@@ -376,7 +460,8 @@ float successTeamA() {
         }
       }
     }
-    WLratioA = w / (w+l+d);
+    if((w+l+d) != 0) WLratioA = w / (w+l+d);
+    else WLratioA = 0.0;
     winLossA = new float[3];
     winLossA[0] = w;
     winLossA[1] = l;
@@ -414,7 +499,8 @@ float successTeamB() {
         }
       }
     }
-    WLratioB = w / (w+l+d);
+    if((w+l+d) != 0) WLratioB = w / (w+l+d);
+    else WLratioB = 0.0;
     winLossB = new float[3];
     winLossB[0] = w;
     winLossB[1] = l;

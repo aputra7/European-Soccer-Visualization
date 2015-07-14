@@ -103,6 +103,7 @@ void refresh() {
 /*Do Not Modify*/
 // Fills up the controlP5 dropdown list with the appropriate items.
 void populateList(DropdownList ddl, String type) {
+  ddl.clear();
   ddl.setBackgroundColor(color(190));
   ddl.setItemHeight(20);
   ddl.setBarHeight(15);
@@ -142,6 +143,9 @@ void controlEvent(ControlEvent theEvent) {
     } else if(whichDropDownList == 1) {
       selectedTeamB = (int)theEvent.getGroup().getValue();
     }
+    populateList(teamA, "a");
+    populateList(teamB, "b");
+    populateList(league, "l");
     updateModules();
     refreshOverview();
     //dropdownListSelection[Integer.parseInt(theEvent.getGroup().toString().substring(0, 1))] = int(theEvent.getGroup().getValue());
@@ -155,15 +159,20 @@ void controlEvent(ControlEvent theEvent) {
 void slider(int sliderVal) {
   if(selectedSeason != (sliderVal - 1993)) {
     selectedSeason = sliderVal - 1993;
-    if(isSliderListenerReady) updateModules();
+    if(isSliderListenerReady) {
+      updateModules();
+      populateList(teamA, "a");
+      populateList(teamB, "b");
+      populateList(league, "l");
+    }
   }
 }
 
 void updateModules() {
   pentagonValues[0] = finesseTeamA();
   pentagonValues[1] = finesseTeamB();
-  //pentagonValues[2] = attackTeamA();
-  //pentagonValues[3] = attackTeamB();
+  pentagonValues[2] = attackTeamA();
+  pentagonValues[3] = attackTeamB();
   pentagonValues[4] = defenseTeamA();
   pentagonValues[5] = defenseTeamB();
   pentagonValues[6] = entertainmentTeamA();
