@@ -307,8 +307,26 @@ float entertainmentTeamA() {
 }
 
 void entertainmentRender() {
-  
+  pushMatrix();
+  translate(0,  height - (height - height*2/5)/2.0);
+  float localWidth = width/3.0;
+  float localHeight = height - (height*2/5 + (height - height*2/5)/2.0);
+  float scale = 25;
+
+  textSize(20);
+  textAlign(RIGHT);
+  text("Entertainment", localWidth-10, 20);
+  rect(0,0, localWidth, localHeight);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);  // y-axis
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
+
+  // Drawing bar chart
+  rect(scale+25,scale+20,goalsA[0]*15 + goalsA[1]*15,scale);
+
+  rect(scale+25,scale+50,goalsA[0]*15 + goalsB[1]*15,scale);
+  popMatrix();
 }
+
 float entertainmentTeamB() {
   if(selectedSeason < 7) return 0.0;
   float numGoalsB = 0;
