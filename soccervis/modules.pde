@@ -301,24 +301,24 @@ void defenseRender() {
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //TeamA Yellow
-  rect(scale+25,scale+20,defenceA[0]*10,scale);
+  rect(scale+25,scale+20,defenceA[0],scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1]*10,scale);
+  rect(scale+25,scale+20,defenceA[1],scale);
   noFill(); 
   //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0]*10,scale);
+  rect(scale+25,scale+50,defenceB[0],scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1]*10,scale);
+  rect(scale+25,scale+50,defenceB[1],scale);
   noFill(); 
   //TeamA Red
-  rect(scale+25,scale+100,defenceA[0]*10,scale);
+  rect(scale+25,scale+100,defenceA[0],scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2]*10,scale);
+  rect(scale+25,scale+100,defenceA[2],scale);
   noFill(); 
   //TeamB Red
-  rect(scale+25,scale+130,defenceB[0]*10,scale);
+  rect(scale+25,scale+130,defenceB[0],scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2]*10,scale);
+  rect(scale+25,scale+130,defenceB[2],scale);
   noFill(); 
   popMatrix();
 }
@@ -532,7 +532,33 @@ float successTeamA() {
 }
 
 void successRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 800,560); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Success", localWidth*2 - 10, 20);
+    popMatrix();
+    return;
+  }
+  pushMatrix();
+  translate(0, height*2/5);
   
+  textSize(15);
+  textAlign(RIGHT);
+  text("Success", localWidth*2 - 10, 20);
+  
+  line(localWidth + scale*2, localHeight*2-scale, localWidth*2 - scale, localHeight*2-scale);
+  line(localWidth + scale*2, localHeight*2-scale, localWidth + scale*2, scale);
+  
+  popMatrix();
 }
 
 float successTeamB() {
