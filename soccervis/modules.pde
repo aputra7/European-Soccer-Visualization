@@ -44,6 +44,7 @@ void finesseRender() {
 }
 
 float finesseTeamB() {
+  if(selectedSeason < 7) return 0.0;
   int totalShotsB = 0;
   int onTargetB = 0;
   int hs2 = 0;
