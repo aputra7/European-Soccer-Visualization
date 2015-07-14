@@ -116,8 +116,9 @@ float attackTeamA() {
       }
     }
     attackScoreA = homeCorner1 + awayCorner1;
-    attackA =  new float[1];
-    attackA[0] = homeCorner1 + awayCorner1;
+    attackA =  new float[2];
+    attackA[0] = homeCorner1;
+    attackA[1] = awayCorner1;
     return attackScoreA;
 }
 
@@ -147,8 +148,11 @@ void attackRender() {
   textAlign(RIGHT);
   text("Attack", localWidth*3-10, 20);
   rect(localWidth*2, 0, localWidth, localHeight);
-  line(scale+25, 0+scale, scale+25, localHeight-scale);
-  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
+  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
+  
+  //rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
+  //rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
   
   popMatrix();
 }
@@ -167,8 +171,9 @@ float attackTeamB() {
       }
     }
     attackScoreB = homeCorner2 + awayCorner2;
-    attackB =  new float[1];
-    attackB[0] = homeCorner2 + awayCorner2;
+    attackB =  new float[2];
+    attackB[0] = homeCorner2;
+    attackB[1] = awayCorner2;
     return attackScoreB;
 }
 
