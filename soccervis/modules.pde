@@ -113,8 +113,8 @@ float attackTeamA() {
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
          awayCorner1 = row.getInt("AC");
       }
-      attackScoreA = homeCorner1 + awayCorner1;
     }
+    attackScoreA = homeCorner1 + awayCorner1;
     attackA =  new float[1];
     attackA[0] = homeCorner1 + awayCorner1;
     return attackScoreA;
@@ -163,8 +163,8 @@ float attackTeamB() {
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayCorner2 = row.getInt("AC");
       }
-      attackScoreB = homeCorner2 + awayCorner2;
     }
+    attackScoreB = homeCorner2 + awayCorner2;
     attackB =  new float[1];
     attackB[0] = homeCorner2 + awayCorner2;
     return attackScoreB;
@@ -274,8 +274,8 @@ float defenseTeamB() {
          awayYC2 = row.getInt("AY");
          awayRC2 = row.getInt("AR");
       }
-      defenceScoreB = homeFouls2 + homeYC2 + homeRC2 + awayFouls2 + awayYC2 + awayRC2;
     }
+    defenceScoreB = homeFouls2 + homeYC2 + homeRC2 + awayFouls2 + awayYC2 + awayRC2;
     defenceB = new float[3];
     defenceB[0] = homeFouls2 + awayFouls2;
     defenceB[1] = homeYC2 + awayYC2;
@@ -298,8 +298,8 @@ float entertainmentTeamA() {
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
          awayGoals1 = row.getInt("FTAG");
       }
-      numGoalsA = awayGoals1 + homeGoals1;
     }
+    numGoalsA = awayGoals1 + homeGoals1;
     goalsA = new float[2];
     goalsA[0] = homeGoals1;
     goalsA[1] = awayGoals1;
@@ -340,8 +340,8 @@ float entertainmentTeamB() {
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayGoals2 = row.getInt("FTAG");
       }
-      numGoalsB = awayGoals2 + homeGoals2;
     }
+    numGoalsB = awayGoals2 + homeGoals2;
     goalsB = new float[2];
     goalsB[0] = homeGoals2;
     goalsB[1] = awayGoals2;
