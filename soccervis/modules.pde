@@ -183,7 +183,7 @@ void attackRender() {
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
   // Team A 
-  fill(100,0,0);
+  fill(255,0,0,0.7);
   rect(scale+25 + localWidth*2,scale*2,attackA[0],scale*2);
   noFill();
   textSize(10);
@@ -191,7 +191,7 @@ void attackRender() {
   text("Team A", 2*localWidth + 10, localHeight - 6*scale);
   
   // Team B
-  fill(0,0,100);
+  fill(0,0,255,0.7);
   rect(scale+25 + localWidth*2,scale*5,attackB[0],scale*2);
   noFill();
   textSize(10);
@@ -496,7 +496,7 @@ void entertainmentRender() {
   textAlign(LEFT);
   text("Team A", scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
-  fill(100,0,0);
+  fill(255,0,0,0.7);
   rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
   noFill();
   
@@ -505,7 +505,7 @@ void entertainmentRender() {
   textSize(10);
   textAlign(LEFT);
   text("Team B", scale-15, scale*5.3+15);
-  fill(0,0,100);
+  fill(0,0,255,0.7);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
   
@@ -627,28 +627,28 @@ void successRender() {
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
   line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
   //A
-  fill(0,100,0);
+  fill(0.91, 0.03, 0.03);
   rect(localWidth + scale*4, localHeight*2-scale, scale*2, -winLossA[0]);
-  noFill();
+  //noFill();
   
-  fill(0);
+  fill(0.97, 0.11, 0.11,0.7);
   rect(localWidth + scale*4, localHeight*2-scale - winLossA[0], scale*2, -winLossA[1]);
-  noFill();
+  //noFill();
   
-  fill(100,0,0);
+  fill(0.98, 0.24, 0.24,0.5);
   rect(localWidth + scale*4, localHeight*2-scale - winLossA[0] - winLossA[1], scale*2, -winLossA[2]);
-  noFill();
+  //noFill();
   
   //B
-  fill(0,100,0);
+  fill(0.03,0.03,0.91);
   rect(localWidth + scale*8, localHeight*2-scale, scale*2, -winLossB[0]);
   noFill();
   
-  fill(0);
+  fill(0.11,0.11,0.97,0.7);
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0], scale*2, -winLossB[1]);
   noFill();
   
-  fill(100,0,0);
+  fill(0.24,0.24,0.98,0.6);
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   noFill();
 
