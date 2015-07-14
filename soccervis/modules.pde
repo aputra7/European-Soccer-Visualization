@@ -37,10 +37,36 @@ float finesseTeamA() {
 }
 
 void finesseRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
   if(selectedSeason < 7) {
-    //PUT "DATA UNAVAILABLE" HERE
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 1180,444); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Finesse", localWidth*3-10, localHeight+20);
+    rect(0, 0, localWidth, localHeight);
+    popMatrix();
     return;
   }
+  pushMatrix();
+  translate(0, height*2/5);
+  
+  textSize(20);
+  textAlign(RIGHT);
+  text("Finesse", localWidth*3-10, localHeight+20);
+  rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  
+  //DRAW GOAL IMAGE
+  
+  popMatrix();
 }
 
 float finesseTeamB() {
@@ -75,59 +101,79 @@ float finesseTeamB() {
 //NUMBER OF CORNERS & OFFSIDES
 //0.0 - 50.0
 float attackTeamA() {
+  if(selectedSeason < 7) return 0.0;
   float attackScoreA = 0;
   int homeCorner1 = 0;
   int awayCorner1 = 0;
-  int homeOffsides1 = 0;
-  int awayOffsides1 = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
          homeCorner1 = row.getInt("HC");
-         homeOffsides1 = row.getInt("HO");
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
          awayCorner1 = row.getInt("AC");
-         awayOffsides1 = row.getInt("AO");
       }
-      attackScoreA = homeCorner1 + homeOffsides1 + awayCorner1 + awayOffsides1;
+      attackScoreA = homeCorner1 + awayCorner1;
     }
-    attackA =  new float[2];
+    attackA =  new float[1];
     attackA[0] = homeCorner1 + awayCorner1;
-    attackA[1] = homeOffsides1 + awayOffsides1;
     return attackScoreA;
 }
 
 void attackRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 1180,600); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Attack", localWidth*3-10, 20);
+    rect(localWidth*2, 0, localWidth, localHeight);
+    popMatrix();
+    return;
+  }
+  pushMatrix();
+  translate(0, height*2/5);
   
+  textSize(20);
+  textAlign(RIGHT);
+  text("Attack", localWidth*3-10, 20);
+  rect(localWidth*2, 0, localWidth, localHeight);
+  line(scale+25, 0+scale, scale+25, localHeight-scale);
+  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  
+  popMatrix();
 }
 float attackTeamB() {
+  if(selectedSeason < 7) return 0.0;
   float attackScoreB = 0;
   int homeCorner2 = 0;
   int awayCorner2 = 0;
-  int homeOffsides2 = 0;
-  int awayOffsides2 = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
          homeCorner2 = row.getInt("HC");
-         homeOffsides2 = row.getInt("HO");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayCorner2 = row.getInt("AC");
-         awayOffsides2 = row.getInt("AO");
       }
-      attackScoreB = homeCorner2 + homeOffsides2 + awayCorner2 + awayOffsides2;
+      attackScoreB = homeCorner2 + awayCorner2;
     }
-    attackB =  new float[2];
+    attackB =  new float[1];
     attackB[0] = homeCorner2 + awayCorner2;
-    attackB[1] = homeOffsides2 + awayOffsides2;
     return attackScoreB;
 }
 
 // NUMBER OF FOULS + CARDS
 //0.0 - 100.0
 float defenseTeamA() {
+  if(selectedSeason < 7) return 0.0;
   float defenceScoreA = 0;
   int homeFouls1 = 0;
   int awayFouls1 = 0;
@@ -157,18 +203,33 @@ float defenseTeamA() {
 }
 
 void defenseRender() {
-  pushMatrix();
-  translate(0, height*2/5);
   float localWidth = width/3.0;
   float localHeight = (height - height*2/5)/2.0;
   float scale = 25;
-
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    text("DATA UNAVAILABLE", 220,444); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Defense", localWidth-10, 20);
+    rect(0, 0, localWidth, localHeight);
+    popMatrix();
+    return;
+  }
+  pushMatrix();
+  translate(0, height*2/5);
+  
   textSize(20);
   textAlign(RIGHT);
   text("Defense", localWidth-10, 20);
   rect(0, 0, localWidth, localHeight);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //TeamA Yellow
   rect(scale+25,scale+20,defenceA[0]*10,scale);
@@ -193,6 +254,7 @@ void defenseRender() {
   popMatrix();
 }
 float defenseTeamB() {
+  if(selectedSeason < 7) return 0.0;
   float defenceScoreB = 0;
   int homeFouls2 = 0;
   int awayFouls2 = 0;
@@ -224,7 +286,7 @@ float defenseTeamB() {
 // NUMBER OF GOALS
 //0.0 - 100.0
 float entertainmentTeamA() {
-  //JOHN TODO
+  if(selectedSeason < 7) return 0.0;
   float numGoalsA = 0;
   int awayGoals1 = 0;
   int homeGoals1 = 0;
@@ -248,6 +310,7 @@ void entertainmentRender() {
   
 }
 float entertainmentTeamB() {
+  if(selectedSeason < 7) return 0.0;
   float numGoalsB = 0;
   int awayGoals2 = 0;
   int homeGoals2 = 0;
@@ -270,6 +333,7 @@ float entertainmentTeamB() {
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
+  if(selectedSeason < 7) return 0.0;
   int w = 0;
   int l = 0;
   int d = 0;
@@ -307,6 +371,7 @@ void successRender() {
 }
 
 float successTeamB() {
+  if(selectedSeason < 7) return 0.0;
   int w = 0;
   int l = 0;
   int d = 0;
