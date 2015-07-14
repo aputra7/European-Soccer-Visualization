@@ -144,10 +144,57 @@ void overviewLineCharts() {
   rect(x2, y, w, h);
 }
 
-void renderPentagon(float finneseA, float finneseB, float attackA, float attackB, float defenseA, float defenseB,
-                      float entertainmentA, float entertainmentB, float successA, float successB) {
+void renderPentagon() {
+  pushMatrix();
+  stroke(0);
+  float lineLength = 125;
+  float pentagonAngle = -(2*PI)/5.0; //Counter clockwise
+  translate(width/2.0, (height*2/5)/2.0 + 10);
+
+  pushMatrix();
+  rotate(-PI/2.0);
+  noFill();
+  line(0, 0, lineLength, 0);
+  rotate(pentagonAngle);
+  line(0, 0, lineLength, 0);
+  rotate(pentagonAngle);
+  line(0, 0, lineLength, 0);
+  rotate(pentagonAngle);
+  line(0, 0, lineLength, 0);
+  rotate(pentagonAngle);
+  line(0, 0, lineLength, 0);
+  popMatrix();
   
+  beginShape();
+  vertex(sin(PI)*lineLength, cos(PI)*lineLength);
+  vertex(sin(PI - pentagonAngle)*lineLength, cos(PI - pentagonAngle)*lineLength);
+  vertex(sin(PI - pentagonAngle*2)*lineLength, cos(PI - pentagonAngle*2)*lineLength);
+  vertex(sin(PI - pentagonAngle*3)*lineLength, cos(PI - pentagonAngle*3)*lineLength);
+  vertex(sin(PI - pentagonAngle*4)*lineLength, cos(PI - pentagonAngle*4)*lineLength);
+  endShape(CLOSE);
   
+  noStroke();
+  fill(255, 0, 0, 0.5);
+  //TEAM A
+  beginShape();
+  vertex(sin(PI)*lineLength*0.2, cos(PI)*lineLength*0.2);
+  vertex(sin(PI - pentagonAngle)*lineLength*0.5, cos(PI - pentagonAngle)*lineLength*0.5);
+  vertex(sin(PI - pentagonAngle*2)*lineLength*0.4, cos(PI - pentagonAngle*2)*lineLength*0.4);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*0.7, cos(PI - pentagonAngle*3)*lineLength*0.7);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*0.1, cos(PI - pentagonAngle*4)*lineLength*0.1);
+  endShape(CLOSE);
+  //TEAM B
+  fill(0, 0, 255, 0.5);
+  beginShape();
+  vertex(sin(PI)*lineLength*0.9, cos(PI)*lineLength*0.9);
+  vertex(sin(PI - pentagonAngle)*lineLength*0.1, cos(PI - pentagonAngle)*lineLength*0.1);
+  vertex(sin(PI - pentagonAngle*2)*lineLength*0.4, cos(PI - pentagonAngle*2)*lineLength*0.4);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*0.2, cos(PI - pentagonAngle*3)*lineLength*0.2);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*0.6, cos(PI - pentagonAngle*4)*lineLength*0.6);
+  endShape(CLOSE);
+  noFill();
+  stroke(0);
+  popMatrix();
 }
 
 void renderLogos() {

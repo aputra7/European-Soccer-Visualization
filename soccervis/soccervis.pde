@@ -83,7 +83,7 @@ void refresh() {
   
   // Team Logos
   renderLogos();
-
+  renderPentagon();
   line(0, height*2/5, width, height*2/5);
 
   //Overview line charts
@@ -162,8 +162,8 @@ void slider(int sliderVal) {
 void updateModules() {
   pentagonValues[0] = finesseTeamA();
   pentagonValues[1] = finesseTeamB();
-  pentagonValues[2] = attackTeamA();
-  pentagonValues[3] = attackTeamB();
+  //pentagonValues[2] = attackTeamA();
+  //pentagonValues[3] = attackTeamB();
   pentagonValues[4] = defenseTeamA();
   pentagonValues[5] = defenseTeamB();
   pentagonValues[6] = entertainmentTeamA();
