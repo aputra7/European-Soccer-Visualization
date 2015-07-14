@@ -71,7 +71,7 @@ void overviewLineCharts() {
   int x2 = (width*5/6)-w/2;
 
   if(selectedSeason == 21) {
-    stroke(255, 255, 0);
+    stroke(0);
     fill(255, 0, 0);
     textSize(11);
     text(str(pointsA[21]), 421+10, y);
@@ -89,7 +89,7 @@ void overviewLineCharts() {
     int xPos2 = (int)((w/22.0*(i+1)) + x1);
     int yPos2 = (int)((1-(pointsA[(i+1)]/100.0))*h + y);
     if(i == selectedSeason) {
-      stroke(255, 255, 0);
+      stroke(0);
       line(xPos1, y, xPos1, y+h);
       stroke(0);
       fill(255, 0, 0);
@@ -97,9 +97,9 @@ void overviewLineCharts() {
       text(str(pointsA[i]), xPos1+10, max(yPos1-25, y));
     }
     fill(255, 0, 0);
-    line(xPos1, yPos1, xPos2, yPos2);
-    ellipse(xPos1, yPos1, 5, 5);
-    ellipse(xPos2, yPos2, 5, 5);
+    //line(xPos1, yPos1, xPos2, yPos2);  //Line chart
+    ellipse(xPos1, yPos1, 10, 10);
+    ellipse(xPos2, yPos2, 10, 10);
     
 
     //B
@@ -108,7 +108,7 @@ void overviewLineCharts() {
     xPos2 = (int)((w/22.0*(i+1)) + x2);
     yPos2 = (int)((1-(pointsB[(i+1)]/100.0))*h + y);
     if(i == selectedSeason) {
-      stroke(255, 255, 0);
+      stroke(0);
       line(xPos1, y, xPos1, y+h);
       stroke(0);
       fill(0, 0, 255);
@@ -116,9 +116,9 @@ void overviewLineCharts() {
       text(str(pointsB[i]), xPos1+10, max(yPos1-25, y));
     }
     fill(0, 0, 255);
-    line(xPos1, yPos1, xPos2, yPos2);
-    ellipse(xPos1, yPos1, 5, 5);
-    ellipse(xPos2, yPos2, 5, 5);
+    //line(xPos1, yPos1, xPos2, yPos2);  //Line chart
+    ellipse(xPos1, yPos1, 10, 10);
+    ellipse(xPos2, yPos2, 10, 10);
     
   }
   
@@ -182,37 +182,46 @@ void renderPentagon() {
   vertex(sin(PI - pentagonAngle*4)*lineLength, cos(PI - pentagonAngle*4)*lineLength);
   endShape(CLOSE);
   
-  noStroke();
-  fill(255, 0, 0, 0.5);
+  noFill();
+  strokeWeight(2.5);
+  stroke(255, 0, 0);
   //TEAM A
   beginShape();
-  vertex(sin(PI)*lineLength*pentagonValues[0], cos(PI)*lineLength*pentagonValues[0]);
-  vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[2], cos(PI - pentagonAngle)*lineLength*pentagonValues[2]);
-  vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[4], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[4]);
-  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[6], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[6]);
-  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[8], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[8]);
+  vertex(sin(PI)*lineLength*pentagonValues[8], cos(PI)*lineLength*pentagonValues[8]);
+  vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[4], cos(PI - pentagonAngle)*lineLength*pentagonValues[4]);
+  vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[6], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[6]);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[0], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[0]);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[2], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[2]);
   endShape(CLOSE);
   //TEAM B
-  fill(0, 0, 255, 0.5);
+  stroke(0, 0, 255);
   beginShape();
-  vertex(sin(PI)*lineLength*pentagonValues[1], cos(PI)*lineLength*pentagonValues[1]);
-  vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[3], cos(PI - pentagonAngle)*lineLength*pentagonValues[3]);
-  vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[5], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[5]);
-  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[7], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[7]);
-  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[9], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[9]);
+  vertex(sin(PI)*lineLength*pentagonValues[9], cos(PI)*lineLength*pentagonValues[9]);
+  vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[5], cos(PI - pentagonAngle)*lineLength*pentagonValues[5]);
+  vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[7], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[7]);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[1], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[1]);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[3], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[3]);
   endShape(CLOSE);
   noFill();
+  strokeWeight(1);
   stroke(0);
   popMatrix();
   
   textSize(12);
   fill(0);
   textAlign(CENTER);
-  text("Finnese", width/2, 35);
-  text("Attack", 575, 135);
-  text("Defense", 645, 285);
-  text("Entertainment", 800, 285);
-  text("Success", 865, 135);
+  text("Success", width/2, 35);
+  text("Defense", 575, 135);
+  text("Entertainment", 645, 285);
+  text("Finesse", 800, 285);
+  text("Attack", 865, 135);
+  
+  //Finnese
+  if(mouseX >= 695 && mouseX <= 745 && mouseY >= 25 && mouseY <= 40) {
+    
+  }
+  
+  
 }
 
 void renderLogos() {
