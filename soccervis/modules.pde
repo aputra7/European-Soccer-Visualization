@@ -8,6 +8,7 @@ float WLratioA, WLratioB;
 //NUMBER OF SHOTS ON TARGET RATIO
 //0.0 - 10.0
 float finesseTeamA() {
+  if(selectedSeason < 7) return 0.0;
   int totalShotsA = 0;
   int onTargetA = 0;
   int hs1 = 0;
@@ -36,7 +37,10 @@ float finesseTeamA() {
 }
 
 void finesseRender() {
-  
+  if(selectedSeason < 7) {
+    //PUT "DATA UNAVAILABLE" HERE
+    return;
+  }
 }
 
 float finesseTeamB() {
