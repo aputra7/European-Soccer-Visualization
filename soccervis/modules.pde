@@ -335,50 +335,32 @@ void defenseRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
-  // Label Team A Yellow
+  // Label Team A 
   fill(0);
   textSize(10);
   textAlign(LEFT);
-  text("Team A", scale-15, 2*scale+10 );
-
-  // Label team B Yellow
-  textSize(10);
-  textAlign(LEFT);
-  text("Team B", scale-15, 3*scale+15 );
+  text("Team A", scale-15, 3*scale );
   
-  // Label team A Red
+  // Label team A
   textSize(10);
   textAlign(LEFT);
-  text("Team A", scale-15, 5*scale+15 );
-  
-  // Label Team B Red
-  textSize(10);
-  textAlign(LEFT);
-  text("Team B", scale-15, 6*scale+20 );
+  text("Team B", scale-15, 6*scale );
   
   //TeamA Yellow
   noFill();
-  rect(scale+25,scale+20,defenceA[0]-(defenceA[0]/3),scale);
+  rect(scale+25,scale*2,defenceA[0]-(defenceA[0]/3),scale*2);
   fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1]-(defenceA[1]/3),scale);
+  rect(scale+25,scale*2,defenceA[1]-(defenceA[1]/3),scale*2);
+  fill(255, 0, 0);
+  rect(scale+25+defenceA[1]-(defenceA[1]/3),scale*2,defenceA[2]-(defenceA[2]/3),scale*2);
   noFill(); 
   
   //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0]-(defenceB[0]/3),scale);
+  rect(scale+25,scale*5,defenceB[0]-(defenceB[0]/3),scale*2);
   fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1]-(defenceB[1]/3),scale);
-  noFill(); 
-  
-  
-  //TeamA Red
-  rect(scale+25,scale+100,defenceA[0]-(defenceA[0]/3),scale);
+  rect(scale+25,scale*5,defenceB[1]-(defenceB[1]/3),scale*2);
   fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2]-(defenceA[2]/3),scale);
-  noFill(); 
-  //TeamB Red
-  rect(scale+25,scale+130,defenceB[0]-(defenceB[0]/3),scale);
-  fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2]-(defenceA[2]/3),scale);
+  rect(scale+25+defenceB[1]-(defenceB[1]/3),scale*5,defenceB[2]-(defenceA[2]/3),scale*2);
   noFill(); 
   
   popMatrix();
