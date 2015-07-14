@@ -180,8 +180,8 @@ void renderPentagon() {
   vertex(sin(PI)*lineLength*pentagonValues[0], cos(PI)*lineLength*pentagonValues[0]);
   vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[2], cos(PI - pentagonAngle)*lineLength*pentagonValues[2]);
   vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[4], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[4]);
-  vertex(sin(PI - pentagonAngle*3)*lineLength*0.7, cos(PI - pentagonAngle*3)*lineLength*0.7);
-  vertex(sin(PI - pentagonAngle*4)*lineLength*0.1, cos(PI - pentagonAngle*4)*lineLength*0.1);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[6], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[6]);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[8], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[8]);
   endShape(CLOSE);
   //TEAM B
   fill(0, 0, 255, 0.5);
@@ -189,8 +189,8 @@ void renderPentagon() {
   vertex(sin(PI)*lineLength*pentagonValues[1], cos(PI)*lineLength*pentagonValues[1]);
   vertex(sin(PI - pentagonAngle)*lineLength*pentagonValues[3], cos(PI - pentagonAngle)*lineLength*pentagonValues[3]);
   vertex(sin(PI - pentagonAngle*2)*lineLength*pentagonValues[5], cos(PI - pentagonAngle*2)*lineLength*pentagonValues[5]);
-  vertex(sin(PI - pentagonAngle*3)*lineLength*0.2, cos(PI - pentagonAngle*3)*lineLength*0.2);
-  vertex(sin(PI - pentagonAngle*4)*lineLength*0.6, cos(PI - pentagonAngle*4)*lineLength*0.6);
+  vertex(sin(PI - pentagonAngle*3)*lineLength*pentagonValues[7], cos(PI - pentagonAngle*3)*lineLength*pentagonValues[7]);
+  vertex(sin(PI - pentagonAngle*4)*lineLength*pentagonValues[9], cos(PI - pentagonAngle*4)*lineLength*pentagonValues[9]);
   endShape(CLOSE);
   noFill();
   stroke(0);

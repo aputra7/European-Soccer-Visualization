@@ -301,24 +301,24 @@ void defenseRender() {
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //TeamA Yellow
-  rect(scale+25,scale+20,defenceA[0],scale);
+  rect(scale+25,scale+20,defenceA[0]*10,scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1],scale);
+  rect(scale+25,scale+20,defenceA[1]*10,scale);
   noFill(); 
   //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0],scale);
+  rect(scale+25,scale+50,defenceB[0]*10,scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1],scale);
+  rect(scale+25,scale+50,defenceB[1]*10,scale);
   noFill(); 
   //TeamA Red
-  rect(scale+25,scale+100,defenceA[0],scale);
+  rect(scale+25,scale+100,defenceA[0]*10,scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2],scale);
+  rect(scale+25,scale+100,defenceA[2]*10,scale);
   noFill(); 
   //TeamB Red
-  rect(scale+25,scale+130,defenceB[0],scale);
+  rect(scale+25,scale+130,defenceB[0]*10,scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2],scale);
+  rect(scale+25,scale+130,defenceB[2]*10,scale);
   noFill(); 
   popMatrix();
 }
@@ -460,12 +460,12 @@ float entertainmentTeamB() {
   int awayGoals2 = 0;
   int homeGoals2 = 0;
     for(TableRow row : seasons[selectedSeason].rows()) {
-      String homeName += row.getString("HomeTeam");
-      String awayName += row.getString("AwayTeam");
+      String homeName = row.getString("HomeTeam");
+      String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
-         homeGoals2 = row.getInt("FTHG");
+         homeGoals2 += row.getInt("FTHG");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
-         awayGoals2 = row.getInt("FTAG");
+         awayGoals2 += row.getInt("FTAG");
       }
     }
     numGoalsB = awayGoals2 + homeGoals2;
@@ -507,22 +507,22 @@ float successTeamA() {
       if(homeName.equals(teamList.get(selectedTeamA))) {
         if(row.getInt("FTHG") > row.getInt("FTAG")){
           w++;
-        } else if(row.getInt("FTHG") > row.getInt("FTAG")){
+        } else if(row.getInt("FTHG") < row.getInt("FTAG")){
           l++;
+        } else if(row.getInt("FTAG") == row.getInt("FTHG")){
+          d++;
         }
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
         if(row.getInt("FTAG") > row.getInt("FTHG")){
           w++;
-        } else if(row.getInt("FTAG") > row.getInt("FTHG")){
+        } else if(row.getInt("FTAG") < row.getInt("FTHG")){
           l++;
-        }
-      } else if(awayName.equals(teamList.get(selectedTeamA))) {
-        if(row.getInt("FTAG") == row.getInt("FTHG")){
+        } if(row.getInt("FTAG") == row.getInt("FTHG")){
           d++;
         }
       }
     }
-    if((w+l+d) != 0) WLratioA = w / (w+l+d);
+    if((w+l+d) != 0) WLratioA = ((float)w) / (w+l+d);
     else WLratioA = 0.0;
     winLossA = new float[3];
     winLossA[0] = w;
@@ -532,33 +532,7 @@ float successTeamA() {
 }
 
 void successRender() {
-  float localWidth = width/3.0;
-  float localHeight = (height - height*2/5)/2.0;
-  float scale = 25;
-  if(selectedSeason < 7) {
-    fill(0);
-    textSize(20);
-    text("DATA UNAVAILABLE", 800,560); 
-    noFill();
-    pushMatrix();
-    translate(0, height*2/5);
-    textSize(15);
-    textAlign(RIGHT);
-    text("Success", localWidth*2 - 10, 20);
-    popMatrix();
-    return;
-  }
-  pushMatrix();
-  translate(0, height*2/5);
   
-  textSize(15);
-  textAlign(RIGHT);
-  text("Success", localWidth*2 - 10, 20);
-  
-  line(localWidth + scale*2, localHeight*2-scale, localWidth*2 - scale, localHeight*2-scale);
-  line(localWidth + scale*2, localHeight*2-scale, localWidth + scale*2, scale);
-  
-  popMatrix();
 }
 
 float successTeamB() {
@@ -572,22 +546,23 @@ float successTeamB() {
       if(homeName.equals(teamList.get(selectedTeamB))) {
         if(row.getInt("FTHG") > row.getInt("FTAG")){
           w++;
-        } else if(row.getInt("FTHG") > row.getInt("FTAG")){
+        } else if(row.getInt("FTHG") < row.getInt("FTAG")){
           l++;
+        } else if(row.getInt("FTAG") == row.getInt("FTHG")){
+          d++;
         }
+
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
         if(row.getInt("FTAG") > row.getInt("FTHG")){
           w++;
-        } else if(row.getInt("FTAG") > row.getInt("FTHG")){
+        } else if(row.getInt("FTAG") < row.getInt("FTHG")){
           l++;
-        }
-      }else if(awayName.equals(teamList.get(selectedTeamB))) {
-        if(row.getInt("FTAG") == row.getInt("FTHG")){
+        } else if(row.getInt("FTAG") == row.getInt("FTHG")){
           d++;
         }
       }
     }
-    if((w+l+d) != 0) WLratioB = w / (w+l+d);
+    if((w+l+d) != 0) WLratioB = ((float)w) / (w+l+d);
     else WLratioB = 0.0;
     winLossB = new float[3];
     winLossB[0] = w;
