@@ -30,8 +30,8 @@ float finesseTeamA() {
     totalShotsA = hs1 + aws1;
     onTargetA = homeOnTarget1 + awayOnTarget1;
     shotsA = new float[2];
-    shotsA[0] = totalShotsA;
-    shotsA[1] = onTargetA;
+    shotsA[0] = onTargetA/totalShotsA;
+    shotsA[1] = (totalShotsA-onTargetA) / totalShotsA;
     finesseRatioA = ((float)(onTargetA))/totalShotsA;
     return finesseRatioA;
 }
@@ -75,9 +75,14 @@ void finesseRender() {
   line(localWidth/5.0+235 , localHeight/5.0+170,localWidth/5.0+200,80+localHeight/5.0+60 );
 
   ellipse((100+localWidth/5.0), localHeight/5.0+160,5,5 );
-  
-  // Draw the curve
-  // arc(((140+localWidth/5.0+50))/2 +20, localHeight/5.0+120, 50,50, HALF_PI, PIE);
+    //outsideA
+  rect(localWidth*2, localHeight, localWidth/2, localHeight);
+  //outsideA
+  rect(localWidth*2.5, localHeight, localWidth/2, localHeight);
+  //insideA
+  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  //insideB
+  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
 
   popMatrix();
 }
@@ -104,8 +109,8 @@ float finesseTeamB() {
       totalShotsB = hs2 + aws2;
       onTargetB = homeOnTarget2 + awayOnTarget2;
       shotsB = new float[2];
-      shotsB[0] = totalShotsB;
-      shotsB[1] = onTargetB;
+      shotsB[0] = onTargetB/totalShotsB;
+      shotsB[1] = (totalShotsB-onTargetB) / totalShotsB;
       finesseRatioB = ((float)onTargetB)/totalShotsB;
       return finesseRatioB;
       
