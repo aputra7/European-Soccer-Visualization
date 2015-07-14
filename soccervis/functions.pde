@@ -150,6 +150,16 @@ void overviewLineCharts() {
   text("Season", 1185, 315);
   textSize(12);
   text("Select Season", 540, 295);
+  
+  //Slider's labels
+  textSize(9);
+  textAlign(CENTER);
+  for(int i = 0; i<22; i++) {
+    int xPos1 = (int)((440.0/22.0*i) + 510);
+    String year = ""+(93+i);
+    year = year.substring(year.length()-2, year.length());
+    text(year, xPos1, 317);
+  }
 }
 
 void renderPentagon() {
