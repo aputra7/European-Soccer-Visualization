@@ -67,13 +67,14 @@ void finesseRender() {
   
   //DRAW GOAL IMAGE
   translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
-  rect(70, 40, localWidth/5.0+50,localHeight/5.0+50);
-  rect(80, 50, localWidth/5.0+30,localHeight/5.0+40);
-  line(70, localHeight/5.0+90, 50, localHeight/5.0+120);
-  line(70+localWidth/5.0+50, localHeight/5.0+90, 90 + (localWidth/5.0+50), localHeight/5.0+120);
-  line(50, localHeight/5.0+120,90 + (localWidth/5.0+50), localHeight/5.0+120);
+  
+  rect(90, 80, localWidth/5.0+110,localHeight/5.0+60);
+  rect(100, 90, localWidth/5.0+90,localHeight/5.0+50);
+  line(90, 80+localHeight/5.0+60 , 60, localHeight/5.0+170);
+  line(60, localHeight/5.0+170,localWidth/5.0+235 , localHeight/5.0+170);
+  line(localWidth/5.0+235 , localHeight/5.0+170,localWidth/5.0+200,80+localHeight/5.0+60 );
 
-  ellipse(((140+localWidth/5.0+50))/2, localHeight/5.0+110,5,5 );
+  ellipse((100+localWidth/5.0), localHeight/5.0+160,5,5 );
   
   // Draw the curve
   // arc(((140+localWidth/5.0+50))/2 +20, localHeight/5.0+120, 50,50, HALF_PI, PIE);
@@ -182,13 +183,17 @@ void attackRender() {
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
   // Team A 
+  fill(100,0,0);
   rect(scale+25 + localWidth*2,scale*3,attackA[0],scale);
+  noFill();
   textSize(10);
   textAlign(LEFT);
   text("Team A", 2*localWidth + 10, localHeight - 6*scale);
   
   // Team B
+  fill(0,0,100);
   rect(scale+25 + localWidth*2,scale*5.3,attackB[0],scale);
+  noFill();
   textSize(10);
   textAlign(LEFT);
   text("Team B", localWidth*2+10, localHeight - scale*4+7);
@@ -203,7 +208,7 @@ void attackRender() {
 //    attack = attack.substring(attack.length()-2, attack.length());
 //    text(attack, xPos1, 100);
 //  }
-
+  
   popMatrix();
 }
 float attackTeamB() {
@@ -322,7 +327,6 @@ void defenseRender() {
   }
   pushMatrix();
   translate(0, height*2/5);
-  
   textSize(15);
   textAlign(RIGHT);
   text("Defense", localWidth-10, 20);
@@ -332,6 +336,7 @@ void defenseRender() {
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   // Label Team A Yellow
+  fill(0);
   textSize(10);
   textAlign(LEFT);
   text("Team A", scale-15, 2*scale+10 );
@@ -352,6 +357,7 @@ void defenseRender() {
   text("Team B", scale-15, 6*scale+20 );
   
   //TeamA Yellow
+  noFill();
   rect(scale+25,scale+20,defenceA[0]-(defenceA[0]/3),scale);
   fill(255, 255, 0);
   rect(scale+25,scale+20,defenceA[1]-(defenceA[1]/3),scale);
@@ -508,13 +514,18 @@ void entertainmentRender() {
   textAlign(LEFT);
   text("Team A", scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
+  fill(100,0,0);
   rect(scale+25,scale*3,goalsA[0] + goalsA[1],scale);
+  noFill();
   
   // Team B Chart
+  fill(0);
   textSize(10);
   textAlign(LEFT);
   text("Team B", scale-15, scale*5.3+15);
+  fill(0,0,100);
   rect(scale+25,scale*5.3,goalsA[0] + goalsB[1],scale);
+  noFill();
   
 
 
@@ -628,6 +639,7 @@ void successRender() {
   
   textSize(15);
   textAlign(RIGHT);
+  noFill();
   text("Success", localWidth*2-10, scale);
   rect(0, 0, localWidth, localHeight);
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
