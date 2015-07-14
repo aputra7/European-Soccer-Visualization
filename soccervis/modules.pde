@@ -312,24 +312,24 @@ void defenseRender() {
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //TeamA Yellow
-  rect(scale+25,scale+20,defenceA[0]*10,scale);
+  rect(scale+25,scale+20,defenceA[0],scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1]*10,scale);
+  rect(scale+25,scale+20,defenceA[1],scale);
   noFill(); 
   //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0]*10,scale);
+  rect(scale+25,scale+50,defenceB[0],scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1]*10,scale);
+  rect(scale+25,scale+50,defenceB[1],scale);
   noFill(); 
   //TeamA Red
-  rect(scale+25,scale+100,defenceA[0]*10,scale);
+  rect(scale+25,scale+100,defenceA[0],scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2]*10,scale);
+  rect(scale+25,scale+100,defenceA[2],scale);
   noFill(); 
   //TeamB Red
-  rect(scale+25,scale+130,defenceB[0]*10,scale);
+  rect(scale+25,scale+130,defenceB[0],scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2]*10,scale);
+  rect(scale+25,scale+130,defenceB[2],scale);
   noFill(); 
   popMatrix();
 }
@@ -459,12 +459,16 @@ void entertainmentRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
   // Drawing bar chart
-  // Team A
-  rect(scale + 25 + 35, localHeight-scale, scale, -(goalsA[0]*15 + goalsA[1]*15));
-  fill(115, 255, 0);
-  // Team B
-  rect(scale + 120, localHeight-scale,scale, -(goalsB[0]*15 + goalsB[1]*15));
-  fill(135, 235, 0);
+
+  rect(scale+25,scale*3,goalsA[0] + goalsA[1],scale);
+  rect(scale+25,scale*5.3,goalsA[0] + goalsB[1],scale);
+
+//  // Team A
+//  rect(scale + 25 + 35, localHeight-scale, scale, -(goalsA[0]*15 + goalsA[1]*15));
+//  fill(115, 255, 0);
+//  // Team B
+//  rect(scale + 120, localHeight-scale,scale, -(goalsB[0]*15 + goalsB[1]*15));
+//  fill(135, 235, 0);
   popMatrix();
 }
 
@@ -559,23 +563,22 @@ void successRender() {
     translate(0, height*2/5);
     textSize(15);
     textAlign(RIGHT);
-    text("Success", localWidth*2-20, scale);
+    text("Success", localWidth*2-10, scale);
     rect(0,0, localWidth, localHeight*2);
     popMatrix();
     return;
   }
   pushMatrix();
-  translate(0,  height - (height - height*2/5)/2.0);
+  translate(0, height*2/5);
+  
   textSize(15);
   textAlign(RIGHT);
-  fill(0);
-  text("Success", localWidth*2-20, scale);
-  noFill();
-  rect(0,0, localWidth, localHeight*2);
-  line(localWidth + scale, scale, localWidth + scale,localHeight - scale ); 
-  //line(localWidth + scale, localHeight-scale, localWidth-scale, localHeight-scale);
+  text("Success", localWidth*2-10, scale);
+  rect(0, 0, localWidth, localHeight);
+  line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale);
+  line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale, localHeight*2-scale);
+  
 
- 
   popMatrix();
 }
 
