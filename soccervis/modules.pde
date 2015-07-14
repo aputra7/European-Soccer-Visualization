@@ -43,21 +43,22 @@ void finesseRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
-    text("DATA UNAVAILABLE", 1180,444); 
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE", 1210,680); 
     noFill();
     pushMatrix();
     translate(0, height*2/5);
     textSize(15);
     textAlign(RIGHT);
     text("Finesse", localWidth*3-10, localHeight+20);
-    rect(0, 0, localWidth, localHeight);
+    rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
     popMatrix();
     return;
   }
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Finesse", localWidth*3-10, localHeight+20);
   rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
@@ -127,7 +128,8 @@ void attackRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
-    text("DATA UNAVAILABLE", 1180,600); 
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE", 1210,440); 
     noFill();
     pushMatrix();
     translate(0, height*2/5);
@@ -141,7 +143,7 @@ void attackRender() {
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Attack", localWidth*3-10, 20);
   rect(localWidth*2, 0, localWidth, localHeight);
@@ -209,6 +211,7 @@ void defenseRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
+    textAlign(CENTER);
     text("DATA UNAVAILABLE", 220,444); 
     noFill();
     pushMatrix();
@@ -223,7 +226,7 @@ void defenseRender() {
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Defense", localWidth-10, 20);
   rect(0, 0, localWidth, localHeight);
@@ -307,23 +310,39 @@ float entertainmentTeamA() {
 }
 
 void entertainmentRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE",220,680); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Entertainment", localWidth-20, localHeight+20);
+    rect(0,0, localWidth, localHeight*2);
+    popMatrix();
+    return;
+  }
   pushMatrix();
   translate(0,  height - (height - height*2/5)/2.0);
-  float localWidth = width/3.0;
-  float localHeight = height - (height*2/5 + (height - height*2/5)/2.0);
-  float scale = 25;
-
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
-  text("Entertainment", localWidth-10, 20);
-  rect(0,0, localWidth, localHeight);
+  fill(0);
+  text("Entertainment", localWidth-20, 20);
+  noFill();
+  rect(0,0, localWidth, localHeight*2);
   line(scale+25, 0+scale, scale+25, localHeight-scale);  // y-axis
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
   // Drawing bar chart
-  rect(scale+25,scale+20,goalsA[0]*15 + goalsA[1]*15,scale);
-
-  rect(scale+25,scale+50,goalsA[0]*15 + goalsB[1]*15,scale);
+  rect(scale+25,scale*3,goalsA[0]*15 + goalsA[1]*15,scale);
+  rect(scale+25,scale*5.3,goalsA[0]*15 + goalsB[1]*15,scale);
+ 
   popMatrix();
 }
 
