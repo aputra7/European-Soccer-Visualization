@@ -43,21 +43,22 @@ void finesseRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
-    text("DATA UNAVAILABLE", 1180,444); 
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE", 1210,680); 
     noFill();
     pushMatrix();
     translate(0, height*2/5);
     textSize(15);
     textAlign(RIGHT);
     text("Finesse", localWidth*3-10, localHeight+20);
-    rect(0, 0, localWidth, localHeight);
+    rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
     popMatrix();
     return;
   }
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Finesse", localWidth*3-10, localHeight+20);
   rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
@@ -116,6 +117,7 @@ float attackTeamA() {
          attackScoreA += row.getInt("AC");
       }
     }
+
     attackA =  new float[1];
     attackA[0] = homeCorner1 + awayCorner1;
     
@@ -146,7 +148,8 @@ void attackRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
-    text("DATA UNAVAILABLE", 1180,600); 
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE", 1210,440); 
     noFill();
     pushMatrix();
     translate(0, height*2/5);
@@ -160,12 +163,15 @@ void attackRender() {
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Attack", localWidth*3-10, 20);
   rect(localWidth*2, 0, localWidth, localHeight);
-  line(scale+25, 0+scale, scale+25, localHeight-scale);
-  line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
+  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
+  
+  //rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
+  //rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
   
   popMatrix();
 }
@@ -185,6 +191,7 @@ float attackTeamB() {
          attackScoreB += row.getInt("AC");
       }
     }
+
     attackB =  new float[1];
     attackB[0] = homeCorner2 + awayCorner2;
 
@@ -270,6 +277,7 @@ void defenseRender() {
   if(selectedSeason < 7) {
     fill(0);
     textSize(20);
+    textAlign(CENTER);
     text("DATA UNAVAILABLE", 220,444); 
     noFill();
     pushMatrix();
@@ -284,7 +292,7 @@ void defenseRender() {
   pushMatrix();
   translate(0, height*2/5);
   
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
   text("Defense", localWidth-10, 20);
   rect(0, 0, localWidth, localHeight);
@@ -382,8 +390,8 @@ float entertainmentTeamA() {
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
          awayGoals1 = row.getInt("FTAG");
       }
-      numGoalsA = awayGoals1 + homeGoals1;
     }
+    numGoalsA = awayGoals1 + homeGoals1;
     goalsA = new float[2];
     goalsA[0] = homeGoals1;
     goalsA[1] = awayGoals1;
@@ -391,23 +399,39 @@ float entertainmentTeamA() {
 }
 
 void entertainmentRender() {
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE",220,680); 
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Entertainment", localWidth-20, localHeight+20);
+    rect(0,0, localWidth, localHeight*2);
+    popMatrix();
+    return;
+  }
   pushMatrix();
   translate(0,  height - (height - height*2/5)/2.0);
-  float localWidth = width/3.0;
-  float localHeight = height - (height*2/5 + (height - height*2/5)/2.0);
-  float scale = 25;
-
-  textSize(20);
+  textSize(15);
   textAlign(RIGHT);
-  text("Entertainment", localWidth-10, 20);
-  rect(0,0, localWidth, localHeight);
+  fill(0);
+  text("Entertainment", localWidth-20, 20);
+  noFill();
+  rect(0,0, localWidth, localHeight*2);
   line(scale+25, 0+scale, scale+25, localHeight-scale);  // y-axis
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
   // Drawing bar chart
-  rect(scale+25,scale+20,goalsA[0]*15 + goalsA[1]*15,scale);
-
-  rect(scale+25,scale+50,goalsA[0]*15 + goalsB[1]*15,scale);
+  rect(scale+25,scale*3,goalsA[0]*15 + goalsA[1]*15,scale);
+  rect(scale+25,scale*5.3,goalsA[0]*15 + goalsB[1]*15,scale);
+ 
   popMatrix();
 }
 
@@ -424,8 +448,8 @@ float entertainmentTeamB() {
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
          awayGoals2 = row.getInt("FTAG");
       }
-      numGoalsB = awayGoals2 + homeGoals2;
     }
+    numGoalsB = awayGoals2 + homeGoals2;
     goalsB = new float[2];
     goalsB[0] = homeGoals2;
     goalsB[1] = awayGoals2;
