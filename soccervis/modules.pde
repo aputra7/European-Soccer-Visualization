@@ -329,7 +329,9 @@ void defenseRender() {
   translate(0, height*2/5);
   textSize(15);
   textAlign(RIGHT);
+  fill(0);
   text("Defense", localWidth-10, 20);
+  noFill();
   rect(0, 0, localWidth, localHeight);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
@@ -621,8 +623,9 @@ void successRender() {
   
   textSize(15);
   textAlign(RIGHT);
-  noFill();
+  fill(0);
   text("Success", localWidth*2-10, scale);
+  noFill();
   rect(0, 0, localWidth, localHeight);
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
   line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
