@@ -66,7 +66,18 @@ void finesseRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   
   //DRAW GOAL IMAGE
+  translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
+  rect(70, 40, localWidth/5.0+50,localHeight/5.0+50);
+  rect(80, 50, localWidth/5.0+30,localHeight/5.0+40);
+  line(70, localHeight/5.0+90, 50, localHeight/5.0+120);
+  line(70+localWidth/5.0+50, localHeight/5.0+90, 90 + (localWidth/5.0+50), localHeight/5.0+120);
+  line(50, localHeight/5.0+120,90 + (localWidth/5.0+50), localHeight/5.0+120);
+
+  ellipse(((140+localWidth/5.0+50))/2, localHeight/5.0+110,5,5 );
   
+  // Draw the curve
+  // arc(((140+localWidth/5.0+50))/2 +20, localHeight/5.0+120, 50,50, HALF_PI, PIE);
+
   popMatrix();
 }
 
@@ -448,9 +459,10 @@ void entertainmentRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
   // Drawing bar chart
-  rect(scale+25,scale*3,goalsA[0]*15 + goalsA[1]*15,scale);
-  rect(scale+25,scale*5.3,goalsA[0]*15 + goalsB[1]*15,scale);
- 
+  rect(scale + 60, scale + 100, scale, goalsA[0]*15 + goalsA[1]*15);
+  fill(115, 255, 0);
+  rect(scale + 120, scale + 100, scale, goalsB[0]*15 + goalsB[1]*15);
+  fill(135, 235, 0);
   popMatrix();
 }
 
