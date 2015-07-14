@@ -181,9 +181,29 @@ void attackRender() {
   line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
-  //rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
-  //rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
+  // Team A 
+  rect(scale+25 + localWidth*2,scale*3,attackA[0],scale);
+  textSize(10);
+  textAlign(LEFT);
+  text("Team A", 2*localWidth + 10, localHeight - 6*scale);
   
+  // Team B
+  rect(scale+25 + localWidth*2,scale*5.3,attackB[0],scale);
+  textSize(10);
+  textAlign(LEFT);
+  text("Team B", localWidth*2+10, localHeight - scale*4+7);
+//  rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
+//  rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
+
+    // x-axis label
+//  textAlign(CENTER);
+//  for(int i = 0; i<22; i++) {
+//    int xPos1 = (int)((localWidth/max(attackA[0],attackB[0])*i) + 10);
+//    String attack = ""+(0+i);
+//    attack = attack.substring(attack.length()-2, attack.length());
+//    text(attack, xPos1, 100);
+//  }
+
   popMatrix();
 }
 float attackTeamB() {
@@ -311,16 +331,39 @@ void defenseRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
+  // Label Team A Yellow
+  textSize(10);
+  textAlign(LEFT);
+  text("Team A", scale-15, 2*scale+10 );
+
+  // Label team B Yellow
+  textSize(10);
+  textAlign(LEFT);
+  text("Team B", scale-15, 3*scale+15 );
+  
+  // Label team A Red
+  textSize(10);
+  textAlign(LEFT);
+  text("Team A", scale-15, 5*scale+15 );
+  
+  // Label Team B Red
+  textSize(10);
+  textAlign(LEFT);
+  text("Team B", scale-15, 6*scale+20 );
+  
   //TeamA Yellow
   rect(scale+25,scale+20,defenceA[0],scale);
   fill(255, 255, 0);
   rect(scale+25,scale+20,defenceA[1],scale);
   noFill(); 
+  
   //TeamB Yellow
   rect(scale+25,scale+50,defenceB[0],scale);
   fill(255, 255, 0);
   rect(scale+25,scale+50,defenceB[1],scale);
   noFill(); 
+  
+  
   //TeamA Red
   rect(scale+25,scale+100,defenceA[0],scale);
   fill(255, 0, 0);
@@ -331,6 +374,7 @@ void defenseRender() {
   fill(255, 0, 0);
   rect(scale+25,scale+130,defenceB[2],scale);
   noFill(); 
+  
   popMatrix();
 }
 float defenseTeamB() {
@@ -458,15 +502,26 @@ void entertainmentRender() {
   line(scale+25, 0+scale, scale+25, localHeight-scale);  // y-axis
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
-  // Drawing bar chart
-
+  // Drawing bar charts
+  // Team A Chart
+  textSize(10);
+  textAlign(LEFT);
+  text("Team A", scale-15, scale*3+15);
+  //text("Team B", scale-15, 6*scale+20 );
   rect(scale+25,scale*3,goalsA[0] + goalsA[1],scale);
+  
+  // Team B Chart
+  textSize(10);
+  textAlign(LEFT);
+  text("Team B", scale-15, scale*5.3+15);
   rect(scale+25,scale*5.3,goalsA[0] + goalsB[1],scale);
+  
 
-//  // Team A
+
+//  // Team A Verticle Bar
 //  rect(scale + 25 + 35, localHeight-scale, scale, -(goalsA[0]*15 + goalsA[1]*15));
 //  fill(115, 255, 0);
-//  // Team B
+//  // Team B Vertical Bar
 //  rect(scale + 120, localHeight-scale,scale, -(goalsB[0]*15 + goalsB[1]*15));
 //  fill(135, 235, 0);
   popMatrix();
