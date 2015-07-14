@@ -184,7 +184,7 @@ void attackRender() {
   
   // Team A 
   fill(100,0,0);
-  rect(scale+25 + localWidth*2,scale*3,attackA[0],scale);
+  rect(scale+25 + localWidth*2,scale*2,attackA[0],scale*2);
   noFill();
   textSize(10);
   textAlign(LEFT);
@@ -192,7 +192,7 @@ void attackRender() {
   
   // Team B
   fill(0,0,100);
-  rect(scale+25 + localWidth*2,scale*5.3,attackB[0],scale);
+  rect(scale+25 + localWidth*2,scale*5,attackB[0],scale*2);
   noFill();
   textSize(10);
   textAlign(LEFT);
@@ -515,7 +515,7 @@ void entertainmentRender() {
   text("Team A", scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
   fill(100,0,0);
-  rect(scale+25,scale*3,goalsA[0] + goalsA[1],scale);
+  rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
   noFill();
   
   // Team B Chart
@@ -524,7 +524,7 @@ void entertainmentRender() {
   textAlign(LEFT);
   text("Team B", scale-15, scale*5.3+15);
   fill(0,0,100);
-  rect(scale+25,scale*5.3,goalsA[0] + goalsB[1],scale);
+  rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
   
 
