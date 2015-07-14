@@ -352,27 +352,27 @@ void defenseRender() {
   text("Team B", scale-15, 6*scale+20 );
   
   //TeamA Yellow
-  rect(scale+25,scale+20,defenceA[0],scale);
+  rect(scale+25,scale+20,defenceA[0]-(defenceA[0]/3),scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1],scale);
+  rect(scale+25,scale+20,defenceA[1]-(defenceA[1]/3),scale);
   noFill(); 
   
   //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0],scale);
+  rect(scale+25,scale+50,defenceB[0]-(defenceB[0]/3),scale);
   fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1],scale);
+  rect(scale+25,scale+50,defenceB[1]-(defenceB[1]/3),scale);
   noFill(); 
   
   
   //TeamA Red
-  rect(scale+25,scale+100,defenceA[0],scale);
+  rect(scale+25,scale+100,defenceA[0]-(defenceA[0]/3),scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2],scale);
+  rect(scale+25,scale+100,defenceA[2]-(defenceA[2]/3),scale);
   noFill(); 
   //TeamB Red
-  rect(scale+25,scale+130,defenceB[0],scale);
+  rect(scale+25,scale+130,defenceB[0]-(defenceB[0]/3),scale);
   fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2],scale);
+  rect(scale+25,scale+130,defenceB[2]-(defenceA[2]/3),scale);
   noFill(); 
   
   popMatrix();
@@ -633,14 +633,30 @@ void successRender() {
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
   line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
   //A
+  fill(0,100,0);
   rect(localWidth + scale*4, localHeight*2-scale, scale*2, -winLossA[0]);
-  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0], scale*2, -winLossA[1]);
-  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0] - winLossA[1], scale*2, -winLossA[2]);
-  //B
-  rect(localWidth + scale*8, localHeight*2-scale, scale*2, -winLossB[0]);
-  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0], scale*2, -winLossB[1]);
-  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
+  noFill();
   
+  fill(0);
+  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0], scale*2, -winLossA[1]);
+  noFill();
+  
+  fill(100,0,0);
+  rect(localWidth + scale*4, localHeight*2-scale - winLossA[0] - winLossA[1], scale*2, -winLossA[2]);
+  noFill();
+  
+  //B
+  fill(0,100,0);
+  rect(localWidth + scale*8, localHeight*2-scale, scale*2, -winLossB[0]);
+  noFill();
+  
+  fill(0);
+  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0], scale*2, -winLossB[1]);
+  noFill();
+  
+  fill(100,0,0);
+  rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
+  noFill();
 
   popMatrix();
 }
