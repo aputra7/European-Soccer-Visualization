@@ -532,7 +532,37 @@ float successTeamA() {
 }
 
 void successRender() {
-  
+  float localWidth = width/3.0;
+  float localHeight = (height - height*2/5)/2.0;
+  float scale = 25;
+  if(selectedSeason < 7) {
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text("DATA UNAVAILABLE",740,560);
+    noFill();
+    pushMatrix();
+    translate(0, height*2/5);
+    textSize(15);
+    textAlign(RIGHT);
+    text("Success", localWidth*2-20, scale);
+    rect(0,0, localWidth, localHeight*2);
+    popMatrix();
+    return;
+  }
+  pushMatrix();
+  translate(0,  height - (height - height*2/5)/2.0);
+  textSize(15);
+  textAlign(RIGHT);
+  fill(0);
+  text("Success", localWidth*2-20, scale);
+  noFill();
+  rect(0,0, localWidth, localHeight*2);
+  line(localWidth + scale, scale, localWidth + scale,localHeight - scale ); 
+  //line(localWidth + scale, localHeight-scale, localWidth-scale, localHeight-scale);
+
+ 
+  popMatrix();
 }
 
 float successTeamB() {
