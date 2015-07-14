@@ -183,7 +183,7 @@ void attackRender() {
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
   // Team A 
-  fill(255,0,0,0.7);
+  fill(0.91,0.03,0.03);
   rect(scale+25 + localWidth*2,scale*2,attackA[0],scale*2);
   noFill();
   textSize(10);
@@ -191,7 +191,7 @@ void attackRender() {
   text("Team A", 2*localWidth + 10, localHeight - 6*scale);
   
   // Team B
-  fill(0,0,255,0.7);
+  fill(0.03,0.03,0.91);
   rect(scale+25 + localWidth*2,scale*5,attackB[0],scale*2);
   noFill();
   textSize(10);
@@ -498,7 +498,7 @@ void entertainmentRender() {
   textAlign(LEFT);
   text("Team A", scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
-  fill(255,0,0,0.7);
+  fill(0.91,0.03,0.03);
   rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
   noFill();
   
@@ -507,7 +507,7 @@ void entertainmentRender() {
   textSize(10);
   textAlign(LEFT);
   text("Team B", scale-15, scale*5.3+15);
-  fill(0,0,255,0.7);
+  fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
   
@@ -618,7 +618,15 @@ void successRender() {
     popMatrix();
     return;
   }
+  rect(873,740,scale,scale);
+  textSize(10);
+  textAlign(CENTER);
+  text("W",885,755);
+  rect(873,740-scale,scale,scale);
+  text("D",884,729);
+  rect(873,740-scale*2,scale,scale);
   pushMatrix();
+  text("L",886,702);
   translate(0, height*2/5);
   
   textSize(15);
@@ -654,7 +662,7 @@ void successRender() {
   fill(0.24,0.24,0.98,0.6);
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   noFill();
-
+  
   popMatrix();
 }
 
