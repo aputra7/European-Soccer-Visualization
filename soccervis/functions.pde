@@ -151,6 +151,7 @@ void renderPentagon() {
   float pentagonAngle = -(2*PI)/5.0; //Counter clockwise
   translate(width/2.0, (height*2/5)/2.0 + 10);
 
+  
   pushMatrix();
   rotate(-PI/2.0);
   noFill();

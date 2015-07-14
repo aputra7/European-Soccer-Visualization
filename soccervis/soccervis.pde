@@ -94,6 +94,7 @@ void refresh() {
   defenseRender();
   entertainmentRender();
   successRender();
+  renderPentagon();
 }
 
 
