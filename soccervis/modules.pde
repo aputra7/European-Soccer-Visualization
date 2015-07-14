@@ -423,7 +423,7 @@ float defenseTeamB() {
 // NUMBER OF GOALS
 //0.0 - 100.0
 float entertainmentTeamA() {
-  if(selectedSeason < 7) return 0.0;
+  //if(selectedSeason < 7) return 0.0;
   float numGoalsA = 0;
   int awayGoals1 = 0;
   int homeGoals1 = 0;
@@ -466,7 +466,7 @@ void entertainmentRender() {
   float localWidth = width/3.0;
   float localHeight = (height - height*2/5)/2.0;
   float scale = 25;
-  if(selectedSeason < 7) {
+  /*if(selectedSeason < 7) {
     fill(0);
     textSize(20);
     textAlign(CENTER);
@@ -480,7 +480,7 @@ void entertainmentRender() {
     rect(0,0, localWidth, localHeight*2);
     popMatrix();
     return;
-  }
+  }*/
   pushMatrix();
   translate(0,  height - (height - height*2/5)/2.0);
   textSize(15);
@@ -523,7 +523,7 @@ void entertainmentRender() {
 }
 
 float entertainmentTeamB() {
-  if(selectedSeason < 7) return 0.0;
+  //if(selectedSeason < 7) return 0.0;
   float numGoalsB = 0;
   int awayGoals2 = 0;
   int homeGoals2 = 0;
@@ -565,7 +565,7 @@ float entertainmentTeamB() {
 // WIN LOSS RATIO
 //0.0 - 100.0
 float successTeamA() {
-  if(selectedSeason < 7) return 0.0;
+  //if(selectedSeason < 7) return 0.0;
   int w = 0;
   int l = 0;
   int d = 0;
@@ -603,7 +603,7 @@ void successRender() {
   float localWidth = width/3.0;
   float localHeight = (height - height*2/5)/2.0;
   float scale = 25;
-  if(selectedSeason < 7) {
+  /*if(selectedSeason < 7) {
     fill(0);
     textSize(20);
     textAlign(CENTER);
@@ -617,7 +617,7 @@ void successRender() {
     rect(0,0, localWidth, localHeight*2);
     popMatrix();
     return;
-  }
+  }*/
   pushMatrix();
   translate(0, height*2/5);
   
@@ -659,7 +659,7 @@ void successRender() {
 }
 
 float successTeamB() {
-  if(selectedSeason < 7) return 0.0;
+  //if(selectedSeason < 7) return 0.0;
   int w = 0;
   int l = 0;
   int d = 0;
