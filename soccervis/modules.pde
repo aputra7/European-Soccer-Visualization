@@ -621,10 +621,13 @@ void successRender() {
   rect(873,740,scale,scale);
   textSize(10);
   textAlign(CENTER);
+  fill(0);
   text("W",885,755);
+  noFill();
   rect(873,740-scale,scale,scale);
   text("D",884,729);
   rect(873,740-scale*2,scale,scale);
+  noFill();
   pushMatrix();
   text("L",886,702);
   translate(0, height*2/5);
