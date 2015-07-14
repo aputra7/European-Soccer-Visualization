@@ -49,7 +49,7 @@ void finesseRender() {
     translate(0, height*2/5);
     textSize(15);
     textAlign(RIGHT);
-    text("Attack", localWidth-10, 20);
+    text("Finesse", localWidth*3-10, localHeight+20);
     rect(0, 0, localWidth, localHeight);
     popMatrix();
     return;
@@ -59,32 +59,13 @@ void finesseRender() {
   
   textSize(20);
   textAlign(RIGHT);
-  text("Defense", localWidth-10, 20);
-  rect(localWidth*2, 0, localWidth*3, localHeight);
+  text("Finesse", localWidth*3-10, localHeight+20);
+  rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
-  //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
-  //TeamA Yellow
-  rect(scale+25,scale+20,defenceA[0]*10,scale);
-  fill(255, 255, 0);
-  rect(scale+25,scale+20,defenceA[1]*10,scale);
-  noFill(); 
-  //TeamB Yellow
-  rect(scale+25,scale+50,defenceB[0]*10,scale);
-  fill(255, 255, 0);
-  rect(scale+25,scale+50,defenceB[1]*10,scale);
-  noFill(); 
-  //TeamA Red
-  rect(scale+25,scale+100,defenceA[0]*10,scale);
-  fill(255, 0, 0);
-  rect(scale+25,scale+100,defenceA[2]*10,scale);
-  noFill(); 
-  //TeamB Red
-  rect(scale+25,scale+130,defenceB[0]*10,scale);
-  fill(255, 0, 0);
-  rect(scale+25,scale+130,defenceB[2]*10,scale);
-  noFill(); 
+  //DRAW GOAL IMAGE
+  
   popMatrix();
 }
 
@@ -152,8 +133,8 @@ void attackRender() {
     translate(0, height*2/5);
     textSize(15);
     textAlign(RIGHT);
-    text("Attack", localWidth-10, 20);
-    rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
+    text("Attack", localWidth*3-10, 20);
+    rect(localWidth*2, 0, localWidth, localHeight);
     popMatrix();
     return;
   }
@@ -162,12 +143,11 @@ void attackRender() {
   
   textSize(20);
   textAlign(RIGHT);
-  text("Defense", localWidth-10, 20);
-  rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
+  text("Attack", localWidth*3-10, 20);
+  rect(localWidth*2, 0, localWidth, localHeight);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   
-  //DRAW GOAL IMAGE
   popMatrix();
 }
 float attackTeamB() {
