@@ -459,9 +459,11 @@ void entertainmentRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);  // x-axis
 
   // Drawing bar chart
-  rect(scale + 60, scale + 100, scale, goalsA[0]*15 + goalsA[1]*15);
+  // Team A
+  rect(scale + 25 + 35, localHeight-scale, scale, -(goalsA[0]*15 + goalsA[1]*15));
   fill(115, 255, 0);
-  rect(scale + 120, scale + 100, scale, goalsB[0]*15 + goalsB[1]*15);
+  // Team B
+  rect(scale + 120, localHeight-scale,scale, -(goalsB[0]*15 + goalsB[1]*15));
   fill(135, 235, 0);
   popMatrix();
 }
