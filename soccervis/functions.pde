@@ -23,7 +23,7 @@ void importData(String code) {
   seasons[21] = loadTable("data/" + code + "14-15.csv","header, csv");
 }
 
-void refreshOverview() {
+void refreshOverview(String code) {
   for(int i = 0; i<seasons.length; i++) {
     int pointsforA = 0;
     int pointsforB = 0;
@@ -61,7 +61,14 @@ void refreshOverview() {
     pointsA[i] = pointsforA;
     pointsB[i] = pointsforB;
   }
+  
+  //Load logos
+  logoA = loadImage(code+teamList.get(selectedTeamA)+".png");
+  logoA.resize(100, 100);
+  logoB = loadImage(code+teamList.get(selectedTeamB)+".png");
+  logoB.resize(100, 100); 
 }
+//end of refreshOverview
 
 void overviewLineCharts() {
   int w = 400;
@@ -161,6 +168,7 @@ void overviewLineCharts() {
     text(year, xPos1, 317);
   }
 }
+//end of overviewLineCharts
 
 void renderPentagon() {
   pushMatrix();
@@ -278,7 +286,14 @@ void renderPentagon() {
 }
 
 void renderLogos() {
+  float x1 = (width/6)-50;
+  float x2 = (width*5/6)-50;
+  float y = 30;
+  float w = 100;
+  float h = 100;
   noFill();
-  rect((width/6)-50, 30, 100, 100);
-  rect((width*5/6)-50, 30, 100, 100);
+  rect(x1, y, w, h);
+  rect(x2, y, w, h);
+  if(logoA != null)image(logoA, x1, y);
+  if(logoB != null)image(logoB, x2, y);
 }

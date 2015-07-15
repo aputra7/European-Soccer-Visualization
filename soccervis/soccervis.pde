@@ -15,6 +15,8 @@ int selectedTeamB;  //0-21 Corresponds to index of teamList
 ArrayList<String> teamList = new ArrayList<String>(); // List of team names
 boolean isSliderListenerReady = false;
 float[] pentagonValues; //0-10 A,B,A,B,A,B...
+PImage logoA;
+PImage logoB;
 
 //Global variables for modules
 float[] shotsA;
@@ -47,6 +49,7 @@ void setup(){
   seasons = new Table[22];
   pointsA = new int[22];
   pointsB = new int[22];
+  pentagonValues = new float[10];
   importData("E"); // 'E' for English Premier League
 
   //controlP5
@@ -70,8 +73,7 @@ void setup(){
   selectedSeason = 21;
   selectedLeague = 0;
   isSliderListenerReady = true;
-  pentagonValues = new float[10];
-  refreshOverview();
+  refreshOverview("E");  //E for English premier league
   updateModules();
 }
 
@@ -149,7 +151,7 @@ void controlEvent(ControlEvent theEvent) {
     populateList(teamB, "b");
     populateList(league, "l");
     updateModules();
-    refreshOverview();
+    refreshOverview("E");  //E for English Premier League
     //dropdownListSelection[Integer.parseInt(theEvent.getGroup().toString().substring(0, 1))] = int(theEvent.getGroup().getValue());
   } 
   else if (theEvent.isController()) {
