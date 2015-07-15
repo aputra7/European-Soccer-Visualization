@@ -67,22 +67,34 @@ void finesseRender() {
   
   //DRAW GOAL IMAGE
   translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
-  
+  //grass
+  fill(0.23, 0.58, 0.06,0.8);
+  rect(0-scale*2,localHeight-(localHeight-(80+localHeight/5.0+61)),localWidth,localHeight-(80+localHeight/5.0+55));
+//  //outsideA
+//  fill(0.91,0.03,0.03,0.8);
+//  rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
+//  //outsideB
+//  fill(0.03,0.03,0.91,0.5);
+//  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
+  //insideA
+  fill(0.91,0.03,0.03,0.3);
+  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  //insideB
+  fill(0.03,0.03,0.91,0.5);
+  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  noFill();
   rect(90, 80, localWidth/5.0+110,localHeight/5.0+60);
   rect(100, 90, localWidth/5.0+90,localHeight/5.0+50);
   line(90, 80+localHeight/5.0+60 , 60, localHeight/5.0+170);
   line(60, localHeight/5.0+170,localWidth/5.0+235 , localHeight/5.0+170);
-  line(localWidth/5.0+235 , localHeight/5.0+170,localWidth/5.0+200,80+localHeight/5.0+60 );
+  line(localWidth/5.0+235 , localHeight/5.0+170,localWidth/5.0+200,80+localHeight/5.0+60);
+  line(0-scale*2,(localHeight/2)+68,width,(localHeight/2)+68);
+  line(59, 80+localHeight/5.0+62 , 0, localHeight/5.0+200);
+  line(330,80+localHeight/5.0+62,localWidth-scale*3,localHeight/5.0+200 );
 
-  ellipse((100+localWidth/5.0), localHeight/5.0+160,5,5 );
-  //outsideA
-  rect(0-scale*2,0,(localWidth/2)+3,localHeight);
-  //outsideB
-  rect((localWidth/2)+3, 0, (localWidth), localHeight);
-  //insideA
-  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
-  //insideB
-  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  ellipse((100+localWidth/5.0)-3, localHeight/5.0+180,5,5 );
+
+
 
   popMatrix();
 }
@@ -182,7 +194,9 @@ void attackRender() {
   
   textSize(15);
   textAlign(RIGHT);
+  fill(0);
   text("Attack", localWidth*3-10, 20);
+  noFill();
   rect(localWidth*2, 0, localWidth, localHeight);
   line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);

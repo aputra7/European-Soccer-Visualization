@@ -281,7 +281,7 @@ void renderPentagon() {
     fill(1, 1, 0, 1);
     rect(mouseX+10, mouseY, 190, 60);
     fill(0);
-    text("Attack is measured by how\nmuch a team spends in\nopposition territory (corner kicks).", mouseX+13, mouseY+12);
+    text("Attack is measured by how\nmuch a team spends in\nopposition territory (Corners).", mouseX+13, mouseY+12);
   }
 }
 
