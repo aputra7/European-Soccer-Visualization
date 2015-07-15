@@ -98,8 +98,8 @@ void overviewLineCharts() {
     }
     fill(255, 0, 0);
     //line(xPos1, yPos1, xPos2, yPos2);  //Line chart
-    ellipse(xPos1, yPos1, 10, 10);
-    ellipse(xPos2, yPos2, 10, 10);
+    ellipse(xPos1, yPos1, 8, 8);
+    ellipse(xPos2, yPos2, 8, 8);
     
 
     //B
@@ -117,8 +117,8 @@ void overviewLineCharts() {
     }
     fill(0, 0, 255);
     //line(xPos1, yPos1, xPos2, yPos2);  //Line chart
-    ellipse(xPos1, yPos1, 10, 10);
-    ellipse(xPos2, yPos2, 10, 10);
+    ellipse(xPos1, yPos1, 8, 8);
+    ellipse(xPos2, yPos2, 8, 8);
     
   }
   
@@ -226,12 +226,55 @@ void renderPentagon() {
   text("Finesse", 800, 285);
   text("Attack", 865, 135);
   
-  //Finnese
+  //Success
   if(mouseX >= 695 && mouseX <= 745 && mouseY >= 25 && mouseY <= 40) {
-    
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0, 1);
+    rect(mouseX+10, mouseY, 150, 60);
+    fill(0);
+    text("Success is measured by\n the ratio of wins\nto total games played.", mouseX+13, mouseY+12);
   }
   
+  //Defense
+  if(mouseX >= 550 && mouseX <= 600 && mouseY >= 120 && mouseY <= 140) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0, 1);
+    rect(mouseX+10, mouseY, 150, 60);
+    fill(0);
+    text("Defense is measured by\naggressive playing style\n(fouls + bookings).", mouseX+13, mouseY+12);
+  }
   
+  //Entertainment
+  if(mouseX >= 605 && mouseX <= 685 && mouseY >= 275 && mouseY <= 285) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0, 1);
+    rect(mouseX+10 - 150, mouseY - 60, 170, 60);
+    fill(0);
+    text("Entertainment is measured\nby how much goals\na team makes in one season.", mouseX+13-150, mouseY+12-60);
+  }
+  
+  //Finesse
+  if(mouseX >= 780 && mouseX <= 820 && mouseY >= 275 && mouseY <= 285) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0, 1);
+    rect(mouseX+10 - 150, mouseY - 60, 175, 60);
+    fill(0);
+    text("Finesse is measured by the\naccuracy of a team (shots on\ntarget to total shots ratio).", mouseX+13-150, mouseY+12-60);
+  }
+  
+  //Attack
+  if(mouseX >= 850 && mouseX <= 890 && mouseY >= 125 && mouseY <= 140) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0, 1);
+    rect(mouseX+10, mouseY, 190, 60);
+    fill(0);
+    text("Attack is measured by how\nmuch a team spend on enemy's\nteritory (corner kicks).", mouseX+13, mouseY+12);
+  }
 }
 
 void renderLogos() {
