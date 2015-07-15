@@ -69,28 +69,7 @@ void finesseRender() {
   //grass
   fill(0.23, 0.58, 0.06,0.8);
   rect(0-scale*2,localHeight-(localHeight-(80+localHeight/5.0+61)),localWidth,localHeight-(80+localHeight/5.0+55));
-  //outsideA
-  fill(0.91,0.03,0.03,shotsA[1]);
-  rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
-  //rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
-  //outsideB
-  fill(0.03,0.03,0.91,shotsB[1]);
-  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
-  //insideA
-  fill(0.91,0.03,0.03,shotsA[0]);
-  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
-  //insideB
-  fill(0.03,0.03,0.91,shotsA[0]);
-  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
-  noFill();
 
-  //insideA
-  
-  //insideB
-  
-  //outsideA
-  
-  //outsideB
   noFill();
   rect(90, 80, localWidth/5.0+110,localHeight/5.0+60);
   rect(100, 90, localWidth/5.0+90,localHeight/5.0+50);
@@ -102,9 +81,22 @@ void finesseRender() {
   line(330,80+localHeight/5.0+62,localWidth-scale*3,localHeight/5.0+200 );
 
   ellipse((100+localWidth/5.0)-3, localHeight/5.0+180,5,5 );
-
-
-
+    //outsideA
+  fill(0.91,0.03,0.03,shotsA[1]);
+  noStroke();
+  rect(0-scale*2,0,(localWidth/2)+3,localHeight-163);
+  //rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
+  //outsideB
+  fill(0.03,0.03,0.91,shotsB[1]);
+  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
+  //insideA
+  fill(0.91,0.03,0.03,shotsA[0]);
+  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  //insideB
+  fill(0.03,0.03,0.91,shotsA[0]);
+  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  noFill();
+  stroke(0);
   popMatrix();
   //println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
 }
@@ -543,7 +535,7 @@ void entertainmentRender() {
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
- for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/4, j+=5) {
+ for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/4, j+=10) {
     text(int(j), i, localHeight-scale + 15);
   }
   popMatrix();
