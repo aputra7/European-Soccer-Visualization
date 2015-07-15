@@ -535,7 +535,7 @@ void entertainmentRender() {
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
- for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/4, j+=10) {
+ for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/11, j+=10) {
     text(int(j), i, localHeight-scale + 15);
   }
   popMatrix();
@@ -666,15 +666,15 @@ void successRender() {
   text(teamList.get(selectedTeamB), (localWidth + scale*8 + scale*2) - scale, localHeight*2-scale + 10);
     // Y-axis label
 
-  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
-    for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
-    text(int(j), i, localHeight-scale + 15);
-  }
-
-  for (float i= localHeight*2-scale, j = 40; i <= scale; i+= (localHeight*2-scale + scale)/8, j-=5){
-    textAlign(CENTER);
-    text(int(j), localWidth + scale - 15, i);
-  }
+//  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
+//    for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
+//    text(int(j), i, localHeight-scale + 15);
+//  }
+//
+//  for (float i= localHeight*2-scale, j = 40; i <= scale; i+= (localHeight*2-scale + scale)/8, j-=5){
+//    textAlign(CENTER);
+//    text(int(j), localWidth + scale - 15, i);
+//  }
 
   //A
   fill(0.91, 0.03, 0.03);
