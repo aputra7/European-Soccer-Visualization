@@ -656,6 +656,7 @@ void successRender() {
     rect(0,0, localWidth, localHeight*2);
     popMatrix();
     return;*/
+  noFill();
   rect(873,740,scale,scale);
   textSize(10);
   textAlign(CENTER);
@@ -682,6 +683,8 @@ void successRender() {
   textAlign(RIGHT);
   fill(0);
   text("Success", localWidth*2-10, scale);
+  textSize(10);
+  text("W/L/D",localWidth*2-150, localHeight*2 - 30);
   noFill();
   rect(0, 0, localWidth, localHeight);
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
