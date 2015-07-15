@@ -519,6 +519,8 @@ void entertainmentRender() {
   textAlign(RIGHT);
   fill(0);
   text("Entertainment", localWidth-20, 20);
+  textSize(10);
+  text("Total Goals",localWidth-20, localHeight-30);
   noFill();
   rect(0,0, localWidth, localHeight*2);
   line(scale+25, 0+scale, scale+25, localHeight-scale);  // y-axis
@@ -537,7 +539,7 @@ void entertainmentRender() {
 //  text(teamList.get(selectedTeamA), scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
   fill(0.91,0.03,0.03);
-  rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
+  rect(scale+25,scale*2,goalsA[0]*3.7 + goalsA[1]*3.7,scale*2);
   noFill();
   
   // Team B Chart
@@ -546,7 +548,7 @@ void entertainmentRender() {
 //  textAlign(LEFT);
 //  text(teamList.get(selectedTeamB), scale-15, scale*5.3+15);
   fill(0.03,0.03,0.91);
-  rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
+  rect(scale+25,scale*5.3,goalsA[0]*3.7 + goalsB[1]*3.7,scale*2);
   noFill();
 
 // Label Team A 
