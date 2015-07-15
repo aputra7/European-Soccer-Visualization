@@ -72,7 +72,7 @@ void finesseRender() {
   //outsideA
   fill(0.91,0.03,0.03,shotsA[1]);
   rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
-  
+  //rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
   //outsideB
   fill(0.03,0.03,0.91,shotsB[1]);
   rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
@@ -667,6 +667,23 @@ void successRender() {
   rect(0, 0, localWidth, localHeight);
   line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
   line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
+    // Team Label
+  textSize(10);
+  textAlign(CENTER);
+  text(teamList.get(selectedTeamA), (localWidth + scale*4 + scale*2) - scale, localHeight*2-scale + 10 );
+  text(teamList.get(selectedTeamB), (localWidth + scale*8 + scale*2) - scale, localHeight*2-scale + 10);
+    // Y-axis label
+
+  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
+    for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
+    text(int(j), i, localHeight-scale + 15);
+  }
+
+  for (float i= localHeight*2-scale, j = 40; i <= scale; i+= (localHeight*2-scale + scale)/8, j-=5){
+    textAlign(CENTER);
+    text(int(j), localWidth + scale - 15, i);
+  }
+
   //A
   fill(0.91, 0.03, 0.03);
   rect(localWidth + scale*4, localHeight*2-scale, scale*2, -winLossA[0]);
