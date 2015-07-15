@@ -70,16 +70,17 @@ void finesseRender() {
   fill(0.23, 0.58, 0.06,0.8);
   rect(0-scale*2,localHeight-(localHeight-(80+localHeight/5.0+61)),localWidth,localHeight-(80+localHeight/5.0+55));
   //outsideA
-  fill(0.91,0.03,0.03,shotsA[0]);
+  fill(0.91,0.03,0.03,shotsA[1]);
   rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
+  
   //outsideB
-  fill(0.03,0.03,0.91,shotsA[1]);
+  fill(0.03,0.03,0.91,shotsB[1]);
   rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
   //insideA
-  fill(0.91,0.03,0.03,shotsB[0]);
+  fill(0.91,0.03,0.03,shotsA[0]);
   rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
   //insideB
-  fill(0.03,0.03,0.91,shotsB[1]);
+  fill(0.03,0.03,0.91,shotsA[0]);
   rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
   noFill();
 
@@ -236,7 +237,9 @@ void attackRender() {
 //    attack = attack.substring(attack.length()-2, attack.length());
 //    text(attack, xPos1, 100);
 //  }
-  
+  for (float i=scale+25+localWidth*2, j=0; i <= localWidth-scale+localWidth*2; i+=((localWidth-scale+localWidth*2)-(scale+25+localWidth*2))/5, j+=5) {
+    text(int(j), i, localHeight-scale + 15);
+  }
   popMatrix();
 }
 float attackTeamB() {
@@ -392,7 +395,9 @@ void defenseRender() {
   fill(255, 0, 0);
   rect(scale+25+defenceB[1]-(defenceB[1]/3),scale*5,defenceB[2]-(defenceA[2]/3),scale*2);
   noFill(); 
-  
+  for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
+    text(int(j), i, localHeight-scale + 15);
+  }
   popMatrix();
 }
 float defenseTeamB() {
@@ -538,7 +543,9 @@ void entertainmentRender() {
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
-
+ for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/4, j+=5) {
+    text(int(j), i, localHeight-scale + 15);
+  }
   popMatrix();
 }
 
@@ -685,7 +692,7 @@ void successRender() {
   fill(0.24,0.24,0.98,0.6);
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   noFill();
-  
+
   popMatrix();
 }
 
