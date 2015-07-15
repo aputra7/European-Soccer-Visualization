@@ -85,10 +85,11 @@ void finesseRender() {
   fill(0.91,0.03,0.03,shotsA[1]);
   noStroke();
   rect(0-scale*2,0,(localWidth/2)+3,localHeight-163);
-  //rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
+  rect(0-scale*2,localHeight-163,140,localHeight/5.0+60);
   //outsideB
   fill(0.03,0.03,0.91,shotsB[1]);
-  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
+  rect((localWidth/2)-47, 0, localWidth/2, localHeight-163);
+  rect(localWidth/5.0+200,localHeight-163, 200, localHeight/5.0+60);
   //insideA
   fill(0.91,0.03,0.03,shotsA[0]);
   rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
