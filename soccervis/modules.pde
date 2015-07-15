@@ -393,9 +393,11 @@ void defenseRender() {
   textAlign(CENTER,BOTTOM);
   rotate(-HALF_PI);
   text(teamList.get(selectedTeamA), -(scale + scale*2), scale +10 );
-  text(teamList.get(selectedTeamB), -(scale + scale*5), scale +10);  
-  
+  text(teamList.get(selectedTeamB), -(scale + scale*5), scale +10);
   popMatrix();
+  textSize(10);
+  textAlign(CENTER);
+  text("Bookings + Fouls", 425, 535);
 }
 float defenseTeamB() {
   if(selectedSeason < 7) return 0.0;
