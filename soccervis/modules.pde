@@ -210,7 +210,7 @@ void attackRender() {
     textAlign(CENTER);
     text(int(j), i, localHeight-scale + 15);
   }
-
+  // Team label
 //  textSize(10);
 //  textAlign(LEFT);
 //  text(teamList.get(selectedTeamA), 2*localWidth + 10, localHeight - 6*scale);
@@ -226,13 +226,13 @@ void attackRender() {
   rect(scale+25 + localWidth*2,scale*5,attackB[0],scale*2);
   noFill();
 
-  // Label Teams
+  // Label Team A 
   fill(0);
   textSize(10);
   textAlign(CENTER,BOTTOM);
   rotate(-HALF_PI);
-  text(teamList.get(selectedTeamA), -(localHeight - 6*scale - 15) , 2*localWidth + 10 +scale );
-  text(teamList.get(selectedTeamB), -(localHeight - scale*4+7 +5), localWidth*2+10 + scale);  
+  text(teamList.get(selectedTeamA), -(localHeight - 6*scale -15 ), 2*localWidth + 10 + scale );
+  text(teamList.get(selectedTeamB), -(localHeight - scale*4+7 +5), localWidth*2+10 +scale);
   
   popMatrix();
 }
@@ -387,8 +387,7 @@ void defenseRender() {
   fill(255, 0, 0);
   rect(scale+25+defenceB[1]-(defenceB[1]/3),scale*5,defenceB[2]-(defenceA[2]/3),scale*2);
   noFill(); 
-  
-  // Label Teams
+  // Label Team A 
   fill(0);
   textSize(10);
   textAlign(CENTER,BOTTOM);
@@ -529,13 +528,12 @@ void entertainmentRender() {
     textAlign(LEFT);
     text(int(j), i, localHeight-scale + 15);
   }
- 
   // Drawing bar charts
   // Team A Chart
 //  textSize(10);
 //  textAlign(LEFT);
 //  text(teamList.get(selectedTeamA), scale-15, scale*3+15);
-
+  //text("Team B", scale-15, 6*scale+20 );
   fill(0.91,0.03,0.03);
   rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
   noFill();
@@ -549,13 +547,13 @@ void entertainmentRender() {
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
 
-  // Label Teams
+// Label Team A 
   fill(0);
   textSize(10);
   textAlign(CENTER,BOTTOM);
   rotate(-HALF_PI);
   text(teamList.get(selectedTeamA), -(scale + scale*2), scale +10 );
-  text(teamList.get(selectedTeamB), -(scale + scale*5 +10), scale +10);  
+  text(teamList.get(selectedTeamB), -(scale + scale*5 + 10), scale +10);
   popMatrix();
 }
 
@@ -669,7 +667,7 @@ void successRender() {
   text("L",886,702);
   translate(0, height*2/5);
   //Y label
-  float number_scale = (localHeight*2-4*scale)/8;
+  float number_scale = (localHeight*2-2*scale)/8;
   for(float i=localHeight*2-scale, j=0; j<=40; i-=number_scale, j+=5) {
     textSize(10);
     textAlign(CENTER);
@@ -682,7 +680,7 @@ void successRender() {
   text("Success", localWidth*2-10, scale);
   noFill();
   rect(0, 0, localWidth, localHeight);
-  line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale*2); //y
+  line(localWidth + scale, localHeight*2-scale, localWidth+scale, scale); //y
   line(localWidth + scale, localHeight*2-scale, localWidth*2 - scale*5, localHeight*2-scale);//x
     // Team Label
   textSize(10);
