@@ -40,8 +40,8 @@ float[] winLossB;
 
 void setup(){
   //Set up the window
-  // size(1440, 810); // 16:9 aspect ratio
-  size(1440, 810);
+  size(1440, 810); // 16:9 aspect ratio
+  // size(1350, 750);
   colorMode(RGB, 1);
   background(color(1,1,1));
   
