@@ -407,6 +407,23 @@ void defenseRender() {
   textSize(10);
   textAlign(CENTER);
   text("Bookings + Fouls", 425, 535);
+  
+  if(mouseX >= 50 && mouseX <= 425 && mouseY >= 375 && mouseY <= 425) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Fouls: " + (int)defenceA[0] +" Yellow cards: " + (int)defenceA[1] +" Red cards: " + (int)defenceA[2], mouseX+13, mouseY+12);
+  }
+  if(mouseX >= 50 && mouseX <= 425 && mouseY >= 445 && mouseY <= 500) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Fouls: " + (int)defenceB[0] +" Yellow cards: " + (int)defenceB[1] +" Red cards: " + (int)defenceB[2], mouseX+13, mouseY+12);
+  }
 }
 float defenseTeamB() {
   if(selectedSeason < 7) return 0.0;
@@ -568,6 +585,23 @@ void entertainmentRender() {
   text(teamList.get(selectedTeamA), -(scale + scale*2), scale +10 );
   text(teamList.get(selectedTeamB), -(scale + scale*5 + 10), scale +10);
   popMatrix();
+  
+  if(mouseX >= 50 && mouseX <= 425 && mouseY >= 615 && mouseY <= 675) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Home Goals: " + (int)goalsA[0] +" Away goals: " + (int)goalsA[1] +" Total: " + (int)(goalsA[0] + goalsA[1]), mouseX+13, mouseY+12);
+  }
+  if(mouseX >= 50 && mouseX <= 425 && mouseY >= 700 && mouseY <= 750) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Home Goals: " + (int)goalsB[0] +" Away goals: " + (int)goalsB[1] +" Total: " + (int)(goalsB[0] + goalsB[1]), mouseX+13, mouseY+12);
+  }
 }
 
 float entertainmentTeamB() {
@@ -732,6 +766,23 @@ void successRender() {
   noFill();
   
   popMatrix();
+  
+  if(mouseX >= 580 && mouseX <= 635 && mouseY >= 400 && mouseY <= 790) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Wins: " + (int)winLossA[0] +" Losses: " + (int)winLossA[1] +" Draws: " + (int)winLossA[2], mouseX+13, mouseY+12);
+  }
+  if(mouseX >= 680 && mouseX <= 730 && mouseY >= 400 && mouseY <= 790) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 250, 20);
+    fill(0);
+    text("Wins: " + (int)winLossB[0] +" Losses: " + (int)winLossB[1] +" Draws: " + (int)winLossB[2], mouseX+13, mouseY+12);
+  }
 }
 
 float successTeamB() {
