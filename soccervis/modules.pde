@@ -76,12 +76,21 @@ void finesseRender() {
 //  //outsideB
 //  fill(0.03,0.03,0.91,0.5);
 //  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
+//  //insideA
+//  fill(0.91,0.03,0.03,0.3);
+//  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+//  //insideB
+//  fill(0.03,0.03,0.91,0.5);
+//  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+//  noFill();
+
   //insideA
-  fill(0.91,0.03,0.03,0.3);
-  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  
   //insideB
-  fill(0.03,0.03,0.91,0.5);
-  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  
+  //outsideA
+  
+  //outsideB
   noFill();
   rect(90, 80, localWidth/5.0+110,localHeight/5.0+60);
   rect(100, 90, localWidth/5.0+90,localHeight/5.0+50);
@@ -97,6 +106,7 @@ void finesseRender() {
 
 
   popMatrix();
+  println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
 }
 
 float finesseTeamB() {
@@ -529,15 +539,7 @@ void entertainmentRender() {
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
-  
 
-
-//  // Team A Verticle Bar
-//  rect(scale + 25 + 35, localHeight-scale, scale, -(goalsA[0]*15 + goalsA[1]*15));
-//  fill(115, 255, 0);
-//  // Team B Vertical Bar
-//  rect(scale + 120, localHeight-scale,scale, -(goalsB[0]*15 + goalsB[1]*15));
-//  fill(135, 235, 0);
   popMatrix();
 }
 
