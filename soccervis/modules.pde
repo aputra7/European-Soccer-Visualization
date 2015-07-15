@@ -56,13 +56,20 @@ void finesseRender() {
   }
   pushMatrix();
   translate(0, height*2/5);
-  
+  textSize(10);
+  text("Off Target",localWidth*2+scale+10,localHeight+180);
+  text("On Target",localWidth*2+scale*8,localHeight+180);
   textSize(15);
   textAlign(RIGHT);
   text("Finesse", localWidth*3-10, localHeight+20);
   rect(localWidth*2, localHeight, localWidth*3, localHeight*2);
   line(scale+25, 0+scale, scale+25, localHeight-scale);
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
+  
+  textSize(10);
+  textAlign(CENTER);
+  text(teamList.get(selectedTeamA),localWidth*2 + scale*8 + 5, localHeight + scale);
+  text(teamList.get(selectedTeamB),localWidth*2 + scale*10 + 10, localHeight + scale);
   
   //DRAW GOAL IMAGE
   translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
@@ -99,6 +106,8 @@ void finesseRender() {
   noFill();
   stroke(0);
   popMatrix();
+  noFill();
+
   //println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
 }
 
