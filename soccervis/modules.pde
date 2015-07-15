@@ -19,19 +19,18 @@ float finesseTeamA() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamA))) {
-         hs1 = row.getInt("HS");
-         homeOnTarget1 = row.getInt("HST");
+         hs1 += row.getInt("HS");
+         homeOnTarget1 += row.getInt("HST");
       } else if(awayName.equals(teamList.get(selectedTeamA))) {
-         aws1 = row.getInt("AS");
-         awayOnTarget1 = row.getInt("AST");
+         aws1 += row.getInt("AS");
+         awayOnTarget1 += row.getInt("AST");
       }
-      
     }
     totalShotsA = hs1 + aws1;
     onTargetA = homeOnTarget1 + awayOnTarget1;
     shotsA = new float[2];
-    shotsA[0] = onTargetA/totalShotsA;
-    shotsA[1] = (totalShotsA-onTargetA) / totalShotsA;
+    shotsA[0] = ((float)(onTargetA))/totalShotsA;
+    shotsA[1] = (float)(totalShotsA-onTargetA) / totalShotsA;
     finesseRatioA = ((float)(onTargetA))/totalShotsA;
     return finesseRatioA;
 }
@@ -70,19 +69,19 @@ void finesseRender() {
   //grass
   fill(0.23, 0.58, 0.06,0.8);
   rect(0-scale*2,localHeight-(localHeight-(80+localHeight/5.0+61)),localWidth,localHeight-(80+localHeight/5.0+55));
-//  //outsideA
-//  fill(0.91,0.03,0.03,0.8);
-//  rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
-//  //outsideB
-//  fill(0.03,0.03,0.91,0.5);
-//  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
-//  //insideA
-//  fill(0.91,0.03,0.03,0.3);
-//  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
-//  //insideB
-//  fill(0.03,0.03,0.91,0.5);
-//  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
-//  noFill();
+  //outsideA
+  fill(0.91,0.03,0.03,shotsA[0]);
+  rect(0-scale*2,0,(localWidth/2)+3,localHeight-(localHeight-(80+localHeight/5.0+60)));
+  //outsideB
+  fill(0.03,0.03,0.91,shotsA[1]);
+  rect((localWidth/2)-47, 0, localWidth/2, localHeight-(localHeight-(80+localHeight/5.0+60)));
+  //insideA
+  fill(0.91,0.03,0.03,shotsB[0]);
+  rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  //insideB
+  fill(0.03,0.03,0.91,shotsB[1]);
+  rect(100+(localWidth/5.0+90)/2, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
+  noFill();
 
   //insideA
   
@@ -106,7 +105,7 @@ void finesseRender() {
 
 
   popMatrix();
-  println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
+  //println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
 }
 
 float finesseTeamB() {
@@ -121,18 +120,18 @@ float finesseTeamB() {
       String homeName = row.getString("HomeTeam");
       String awayName = row.getString("AwayTeam");
       if(homeName.equals(teamList.get(selectedTeamB))) {
-        hs2 = row.getInt("HS");
-        homeOnTarget2 = row.getInt("HST");
+        hs2 += row.getInt("HS");
+        homeOnTarget2 += row.getInt("HST");
       } else if(awayName.equals(teamList.get(selectedTeamB))) {
-        aws2 = row.getInt("AS");
-        awayOnTarget2 = row.getInt("AST");
+        aws2 += row.getInt("AS");
+        awayOnTarget2 += row.getInt("AST");
         }
       }
       totalShotsB = hs2 + aws2;
       onTargetB = homeOnTarget2 + awayOnTarget2;
       shotsB = new float[2];
-      shotsB[0] = onTargetB/totalShotsB;
-      shotsB[1] = (totalShotsB-onTargetB) / totalShotsB;
+      shotsB[0] = (float)(onTargetB)/totalShotsB;
+      shotsB[1] = (float)(totalShotsB-onTargetB) / totalShotsB;
       finesseRatioB = ((float)onTargetB)/totalShotsB;
       return finesseRatioB;
       
