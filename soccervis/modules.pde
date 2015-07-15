@@ -106,7 +106,23 @@ void finesseRender() {
   noFill();
   stroke(0);
   popMatrix();
-  noFill();
+  
+  if(mouseX >= 963 && mouseX <= 1200 && mouseY >= 570 && mouseY <= 750) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 100, 40);
+    fill(0);
+    text("OnTarget: " + floor(shotsA[0] * 100) + "%  " + "\nOffTarget: " + floor(shotsA[1] * 100) + "%  ", mouseX+13, mouseY+12);
+  }
+  if(mouseX >= 670 && mouseX <= 1440 && mouseY >= 570 && mouseY <= 750) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 100,40);
+    fill(0);
+    text("OnTarget: " + floor(shotsB[0] * 100) + "%  " + "\nOffTarget: " + floor(shotsB[1] * 100) + "%  ", mouseX+13, mouseY+12);
+  }
 
   //println("shots on target TEAM A" + shotsA[0] + "SHOTS OFFTARGET" + shotsA[1]);
 }
@@ -244,8 +260,25 @@ void attackRender() {
   rotate(-HALF_PI);
   text(teamList.get(selectedTeamA), -(localHeight - 6*scale -15 ), 2*localWidth + 10 + scale );
   text(teamList.get(selectedTeamB), -(localHeight - scale*4+7 +5), localWidth*2+10 +scale);
-  
+  noFill();
   popMatrix();
+  
+  if(mouseX >= 1010 && mouseX <= 1300 && mouseY >= 375 && mouseY <= 427) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 100, 20);
+    fill(0);
+    text("Corners: " + (int)attackA[0], mouseX+13, mouseY+12);
+  }
+  if(mouseX >= 1006 && mouseX <= 1230 && mouseY >= 445 && mouseY <= 500) {
+    textSize(12);
+    textAlign(LEFT);
+    fill(1, 1, 0);
+    rect(mouseX+10, mouseY, 100, 20);
+    fill(0);
+    text("Corners: " + (int)attackB[0], mouseX+13, mouseY+12);
+  }
 }
 float attackTeamB() {
   if(selectedSeason < 7) return 0.0;
@@ -374,7 +407,7 @@ void defenseRender() {
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
   //X label
-  for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
+  for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/5, j+=90) {
     textSize(10);
     textAlign(CENTER);
     text(int(j), i, localHeight-scale + 15);
@@ -775,7 +808,7 @@ void successRender() {
     fill(1, 1, 0);
     rect(mouseX+10, mouseY, 250, 20);
     fill(0);
-    text("Wins: " + (int)winLossA[0] +" Losses: " + (int)winLossA[1] +" Draws: " + (int)winLossA[2], mouseX+13, mouseY+12);
+    text("Wins: " + (int)winLossA[0]/10 +" Losses: " + (int)winLossA[1]/10 +" Draws: " + (int)winLossA[2]/10, mouseX+13, mouseY+12);
   }
   if(mouseX >= 680 && mouseX <= 730 && mouseY >= 400 && mouseY <= 790) {
     textSize(12);
@@ -783,7 +816,7 @@ void successRender() {
     fill(1, 1, 0);
     rect(mouseX+10, mouseY, 250, 20);
     fill(0);
-    text("Wins: " + (int)winLossB[0] +" Losses: " + (int)winLossB[1] +" Draws: " + (int)winLossB[2], mouseX+13, mouseY+12);
+    text("Wins: " + (int)winLossB[0]/10 +" Losses: " + (int)winLossB[1]/10 +" Draws: " + (int)winLossB[2]/10, mouseX+13, mouseY+12);
   }
 }
 
