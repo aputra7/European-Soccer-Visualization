@@ -75,10 +75,10 @@ void finesseRender() {
   line(localWidth/5.0+235 , localHeight/5.0+170,localWidth/5.0+200,80+localHeight/5.0+60 );
 
   ellipse((100+localWidth/5.0), localHeight/5.0+160,5,5 );
-    //outsideA
-  rect(localWidth*2, localHeight, localWidth/2, localHeight);
   //outsideA
-  rect(localWidth*2.5, localHeight, localWidth/2, localHeight);
+  rect(0-scale*2,0,(localWidth/2)+3,localHeight);
+  //outsideB
+  rect((localWidth/2)+3, 0, (localWidth), localHeight);
   //insideA
   rect(100, 90,(localWidth/5.0+90)/2,localHeight/5.0+50);
   //insideB
