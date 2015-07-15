@@ -193,7 +193,7 @@ void attackRender() {
   noFill();
   textSize(10);
   textAlign(LEFT);
-  text("Team A", 2*localWidth + 10, localHeight - 6*scale);
+  text(teamList.get(selectedTeamA), 2*localWidth + 10, localHeight - 6*scale);
   
   // Team B
   fill(0.03,0.03,0.91);
@@ -201,7 +201,7 @@ void attackRender() {
   noFill();
   textSize(10);
   textAlign(LEFT);
-  text("Team B", localWidth*2+10, localHeight - scale*4+7);
+  text(teamList.get(selectedTeamB), localWidth*2+10, localHeight - scale*4+7);
 //  rect(scale+25 + localWidth*2,scale*3,attackA[0]*15 + attackA[1]*15,scale);
 //  rect(scale+25 + localWidth*2,scale*5.3,attackB[0]*15 + attackB[1]*15,scale);
 
@@ -346,12 +346,12 @@ void defenseRender() {
   fill(0);
   textSize(10);
   textAlign(LEFT);
-  text("Team A", scale-15, 3*scale );
+  text(teamList.get(selectedTeamA), scale-15, 3*scale );
   
   // Label team A
   textSize(10);
   textAlign(LEFT);
-  text("Team B", scale-15, 6*scale );
+  text(teamList.get(selectedTeamB), scale-15, 6*scale );
   
   //TeamA Yellow
   noFill();
@@ -501,7 +501,7 @@ void entertainmentRender() {
   // Team A Chart
   textSize(10);
   textAlign(LEFT);
-  text("Team A", scale-15, scale*3+15);
+  text(teamList.get(selectedTeamA), scale-15, scale*3+15);
   //text("Team B", scale-15, 6*scale+20 );
   fill(0.91,0.03,0.03);
   rect(scale+25,scale*2,goalsA[0]*2 + goalsA[1]*2,scale*2);
@@ -511,7 +511,7 @@ void entertainmentRender() {
   fill(0);
   textSize(10);
   textAlign(LEFT);
-  text("Team B", scale-15, scale*5.3+15);
+  text(teamList.get(selectedTeamB), scale-15, scale*5.3+15);
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
