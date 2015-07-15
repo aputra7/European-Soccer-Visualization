@@ -354,17 +354,14 @@ void defenseRender() {
   line(scale+25, localHeight-scale, localWidth-scale, localHeight-scale);
   //println(defenceA[0]+ "   " + defenceA[1] + "   " +defenceA[2]);
   
+  //X label
+  for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
+    textSize(10);
+    textAlign(CENTER);
+    text(int(j), i, localHeight-scale + 15);
+  }
   
-  // Label Team A 
-  fill(0);
-  textSize(10);
-  textAlign(LEFT);
-  text(teamList.get(selectedTeamA), scale-15, 3*scale );
-  
-  // Label team A
-  textSize(10);
-  textAlign(LEFT);
-  text(teamList.get(selectedTeamB), scale-15, 6*scale );
+
   
   //TeamA Yellow
   noFill();
@@ -382,9 +379,14 @@ void defenseRender() {
   fill(255, 0, 0);
   rect(scale+25+defenceB[1]-(defenceB[1]/3),scale*5,defenceB[2]-(defenceA[2]/3),scale*2);
   noFill(); 
-  for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
-    text(int(j), i, localHeight-scale + 15);
-  }
+    // Label Team A 
+  fill(0);
+  textSize(12);
+  textAlign(CENTER,BOTTOM);
+  rotate(-HALF_PI);
+  text(teamList.get(selectedTeamA), -(scale + scale*2), scale +10 );
+  text(teamList.get(selectedTeamB), -(scale + scale*5), scale +10);  
+  
   popMatrix();
 }
 float defenseTeamB() {
@@ -649,6 +651,13 @@ void successRender() {
   pushMatrix();
   text("L",886,702);
   translate(0, height*2/5);
+  //Y label
+  float number_scale = (localHeight*2-2*scale)/8;
+  for(float i=localHeight*2-scale, j=0; j<=40; i-=number_scale, j+=5) {
+    textSize(10);
+    textAlign(CENTER);
+    text(int(j), localWidth+10, i); 
+  }
   
   textSize(15);
   textAlign(RIGHT);
@@ -691,10 +700,6 @@ void successRender() {
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   noFill();
   
-  float number_scale = (localHeight*2-2*scale)/8;
-  for(float i=localHeight*2-scale, j=0; j<=40; i-=number_scale, j+=5) {
-    text(int(j), localWidth+10, i); 
-  }
   popMatrix();
 }
 
