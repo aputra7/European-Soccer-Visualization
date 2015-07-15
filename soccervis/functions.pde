@@ -261,7 +261,7 @@ void renderPentagon() {
     fill(1, 1, 0, 1);
     rect(mouseX+10 - 150, mouseY - 60, 170, 60);
     fill(0);
-    text("Entertainment is measured\nby how much goals\na team makes in one season.", mouseX+13-150, mouseY+12-60);
+    text("Entertainment is measured\nby how many goals\na team score in one season.", mouseX+13-150, mouseY+12-60);
   }
   
   //Finesse
@@ -271,7 +271,7 @@ void renderPentagon() {
     fill(1, 1, 0, 1);
     rect(mouseX+10 - 150, mouseY - 60, 175, 60);
     fill(0);
-    text("Finesse is measured by the\naccuracy of a team (shots on\ntarget to total shots ratio).", mouseX+13-150, mouseY+12-60);
+    text("Finesse is measured by the\naccuracy of shooting (shots on\ntarget to total shots ratio).", mouseX+13-150, mouseY+12-60);
   }
   
   //Attack
@@ -281,7 +281,7 @@ void renderPentagon() {
     fill(1, 1, 0, 1);
     rect(mouseX+10, mouseY, 190, 60);
     fill(0);
-    text("Attack is measured by how\nmuch a team spend on enemy's\nteritory (corner kicks).", mouseX+13, mouseY+12);
+    text("Attack is measured by how\nmuch a team spends in\nopposition territory (corner kicks).", mouseX+13, mouseY+12);
   }
 }
 
