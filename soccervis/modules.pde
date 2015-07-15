@@ -68,8 +68,8 @@ void finesseRender() {
   
   textSize(10);
   textAlign(CENTER);
-  text(teamList.get(selectedTeamA),localWidth*2 + scale*8 + 5, localHeight + scale);
-  text(teamList.get(selectedTeamB),localWidth*2 + scale*10 + 10, localHeight + scale);
+  text(teamList.get(selectedTeamA),localWidth*2 + scale*8 + 20, localHeight + scale);
+  text(teamList.get(selectedTeamB),localWidth*2 + scale*10 + 20, localHeight + scale);
   
   //DRAW GOAL IMAGE
   translate(2*width/3.0 + 50, (height - height*2/5)/2.0);
@@ -208,13 +208,15 @@ void attackRender() {
   textAlign(RIGHT);
   fill(0);
   text("Attack", localWidth*3-10, 20);
+  textSize(10);
+  text("Corners", localWidth*3-10, localHeight-30);
   noFill();
   rect(localWidth*2, 0, localWidth, localHeight);
   line(scale+25 + localWidth*2, 0+scale, scale+25+ localWidth*2, localHeight-scale);
   line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
   
   //X label
-  for (float i=scale+25+localWidth*2, j=0; i <= localWidth-scale+localWidth*2; i+=((localWidth-scale+localWidth*2)-(scale+25+localWidth*2))/5, j+=5) {
+  for (float i=scale+25+localWidth*2, j=0; i <= localWidth-scale+localWidth*2; i+=((localWidth-scale+localWidth*2)-(scale+25+localWidth*2))/4, j+=100) {
     textSize(10);
     textAlign(CENTER);
     text(int(j), i, localHeight-scale + 15);
