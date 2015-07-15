@@ -226,17 +226,6 @@ void attackRender() {
   rect(scale+25 + localWidth*2,scale*5,attackB[0],scale*2);
   noFill();
 
-    // x-axis label
-//  textAlign(CENTER);
-//  for(int i = 0; i<22; i++) {
-//    int xPos1 = (int)((localWidth/max(attackA[0],attackB[0])*i) + 10);
-//    String attack = ""+(0+i);
-//    attack = attack.substring(attack.length()-2, attack.length());
-//    text(attack, xPos1, 100);
-//  }
-  for (float i=scale+25+localWidth*2, j=0; i <= localWidth-scale+localWidth*2; i+=((localWidth-scale+localWidth*2)-(scale+25+localWidth*2))/5, j+=5) {
-    text(int(j), i, localHeight-scale + 15);
-  }
   popMatrix();
 }
 float attackTeamB() {
@@ -547,9 +536,7 @@ void entertainmentRender() {
   fill(0.03,0.03,0.91);
   rect(scale+25,scale*5.3,goalsA[0]*2 + goalsB[1]*2,scale*2);
   noFill();
- for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/11, j+=10) {
-    text(int(j), i, localHeight-scale + 15);
-  }
+
   popMatrix();
 }
 
@@ -676,17 +663,7 @@ void successRender() {
   textAlign(CENTER);
   text(teamList.get(selectedTeamA), (localWidth + scale*4 + scale*2) - scale, localHeight*2-scale + 10 );
   text(teamList.get(selectedTeamB), (localWidth + scale*8 + scale*2) - scale, localHeight*2-scale + 10);
-    // Y-axis label
 
-//  line(scale+25+ localWidth*2, localHeight-scale, localWidth-scale+ localWidth*2, localHeight-scale);
-//    for (float i=scale+25, j=0; i <= localWidth-scale; i+=(localWidth-2*scale-25)/8, j+=5) {
-//    text(int(j), i, localHeight-scale + 15);
-//  }
-//
-//  for (float i= localHeight*2-scale, j = 40; i <= scale; i+= (localHeight*2-scale + scale)/8, j-=5){
-//    textAlign(CENTER);
-//    text(int(j), localWidth + scale - 15, i);
-//  }
 
   //A
   fill(0.91, 0.03, 0.03);
@@ -713,6 +690,11 @@ void successRender() {
   fill(0.24,0.24,0.98,0.6);
   rect(localWidth + scale*8, localHeight*2-scale - winLossB[0] - winLossB[1], scale*2, -winLossB[2]);
   noFill();
+  
+  float number_scale = (localHeight*2-2*scale)/8;
+  for(float i=localHeight*2-scale, j=0; j<=40; i-=number_scale, j+=5) {
+    text(int(j), localWidth+10, i); 
+  }
   popMatrix();
 }
 
