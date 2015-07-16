@@ -115,7 +115,7 @@ void finesseRender() {
     fill(0);
     text("OnTarget: " + floor(shotsA[0] * 100) + "%  " + "\nOffTarget: " + floor(shotsA[1] * 100) + "%  ", mouseX+13, mouseY+12);
   }
-  if(mouseX >= 670 && mouseX <= 1440 && mouseY >= 570 && mouseY <= 750) {
+  if(mouseX >= 1200 && mouseX <= 1440 && mouseY >= 570 && mouseY <= 750) {
     textSize(12);
     textAlign(LEFT);
     fill(1, 1, 0);
